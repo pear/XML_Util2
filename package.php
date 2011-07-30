@@ -9,8 +9,8 @@ $desc =
     . "creation of tags, validation of XML names and more."
 ;
 
-$version = '2.0.0alpha1';
-$apiver  = '2.0.0';
+$version = '0.1.0';
+$apiver  = '0.1.0';
 $state   = 'alpha';
 
 $notes = <<<EOT
@@ -18,6 +18,8 @@ Initial release
 Forked from XML_Util
 Fixed dir layout
 PHP5 E_STRICT compatability
+Use of class constants instead of define()s
+Use of exceptions
 EOT;
 
 $package = PEAR_PackageFileManager2::importOptions(

@@ -23,10 +23,10 @@
   <active>no</active>
  </helper>
  <date>2011-07-30</date>
- <time>20:27:29</time>
+ <time>20:44:00</time>
  <version>
-  <release>2.0.0alpha1</release>
-  <api>2.0.0</api>
+  <release>0.1.0</release>
+  <api>0.1.0</api>
  </version>
  <stability>
   <release>alpha</release>
@@ -38,6 +38,8 @@ Initial release
 Forked from XML_Util
 Fixed dir layout
 PHP5 E_STRICT compatability
+Use of class constants instead of define()s
+Use of exceptions
  </notes>
  <contents>
   <dir baseinstalldir="/" name="/">
@@ -93,8 +95,8 @@ PHP5 E_STRICT compatability
  <changelog>
   <release>
    <version>
-    <release>2.0.0alpha1</release>
-    <api>2.0.0</api>
+    <release>0.1.0</release>
+    <api>0.1.0</api>
    </version>
    <stability>
     <release>alpha</release>
@@ -107,6 +109,8 @@ Initial release
 Forked from XML_Util
 Fixed dir layout
 PHP5 E_STRICT compatability
+Use of class constants instead of define()s
+Use of exceptions
    </notes>
   </release>
  </changelog>
