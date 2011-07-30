@@ -71,7 +71,13 @@ $tag12 = array(
 );
 
 echo "TEST:  basic usage with an invalid array" . PHP_EOL;
-echo $util->createTagFromArray($bad) . PHP_EOL . PHP_EOL;
+try {
+    $util->createTagFromArray($bad);
+
+    echo 'FAIL: Exception expected' . PHP_EOL . PHP_EOL;
+} catch (XML_Util2_Exception $e) {
+    echo $e->getMessage() . PHP_EOL . PHP_EOL;
+}
 
 echo "TEST:  basic usage with a valid array (qname only)" . PHP_EOL;
 echo $util->createTagFromArray($tag1) . PHP_EOL . PHP_EOL;
@@ -92,34 +98,46 @@ echo "TEST:  basic usage with a valid array (qname, namespaceUri, and content)" 
 echo $util->createTagFromArray($tag6) . PHP_EOL . PHP_EOL;
 
 echo "TEST:  basic usage with a valid array (namespaceUri, attributes, and content)" . PHP_EOL;
-echo $util->createTagFromArray($tag7) . PHP_EOL . PHP_EOL;
+try {
+    $util->createTagFromArray($tag7);
+
+    echo 'FAIL: Exception expected' . PHP_EOL . PHP_EOL;
+} catch (XML_Util2_Exception $e) {
+    echo $e->getMessage() . PHP_EOL . PHP_EOL;
+}
 
 echo "TEST:  basic usage with a valid array (qname, namespaceUri, attributes, and content), plus REPLACE_ENTITIES" . PHP_EOL;
-echo $util->createTagFromArray($tag4,  XML_UTIL2_REPLACE_ENTITIES) . PHP_EOL . PHP_EOL;
+echo $util->createTagFromArray($tag4,  XML_Util2::REPLACE_ENTITIES) . PHP_EOL . PHP_EOL;
 
 echo "TEST:  basic usage with a valid array (qname, namespaceUri, attributes, and content), plus ENTITIES_NONE" . PHP_EOL;
-echo $util->createTagFromArray($tag4,  XML_UTIL2_ENTITIES_NONE) . PHP_EOL . PHP_EOL;
+echo $util->createTagFromArray($tag4,  XML_Util2::ENTITIES_NONE) . PHP_EOL . PHP_EOL;
 
 echo "TEST:  basic usage with a valid array (qname, namespaceUri, attributes, and content), REPLACE_ENTITIES, and multiline = false" . PHP_EOL;
-echo $util->createTagFromArray($tag4,  XML_UTIL2_REPLACE_ENTITIES, false) . PHP_EOL . PHP_EOL;
+echo $util->createTagFromArray($tag4,  XML_Util2::REPLACE_ENTITIES, false) . PHP_EOL . PHP_EOL;
 
 echo "TEST:  basic usage with a valid array (qname, namespaceUri, attributes, and content), REPLACE_ENTITIES, and multiline = true" . PHP_EOL;
-echo $util->createTagFromArray($tag4,  XML_UTIL2_REPLACE_ENTITIES, true) . PHP_EOL . PHP_EOL;
+echo $util->createTagFromArray($tag4,  XML_Util2::REPLACE_ENTITIES, true) . PHP_EOL . PHP_EOL;
 
 echo "TEST:  basic usage with a valid array (qname, namespaceUri, attributes, and content), REPLACE_ENTITIES, multiline = true, and indent = (2 spaces)" . PHP_EOL;
-echo $util->createTagFromArray($tag4,  XML_UTIL2_REPLACE_ENTITIES, true, '  ') . PHP_EOL . PHP_EOL;
+echo $util->createTagFromArray($tag4,  XML_Util2::REPLACE_ENTITIES, true, '  ') . PHP_EOL . PHP_EOL;
 
 echo "TEST:  basic usage with a valid array (qname, namespaceUri, attributes, and content), REPLACE_ENTITIES, multiline = true, indent = (2 spaces), and linebreak = '^'" . PHP_EOL;
-echo $util->createTagFromArray($tag4,  XML_UTIL2_REPLACE_ENTITIES, true, '  ', '^') . PHP_EOL . PHP_EOL;
+echo $util->createTagFromArray($tag4,  XML_Util2::REPLACE_ENTITIES, true, '  ', '^') . PHP_EOL . PHP_EOL;
 
 echo "TEST:  basic usage with a valid array (qname, namespaceUri, attributes, and content), REPLACE_ENTITIES, multiline = true, indent = (2 spaces), linebreak = '^', and sortAttributes = true" . PHP_EOL;
-echo $util->createTagFromArray($tag4,  XML_UTIL2_REPLACE_ENTITIES, true, '  ', '^', true) . PHP_EOL . PHP_EOL;
+echo $util->createTagFromArray($tag4,  XML_Util2::REPLACE_ENTITIES, true, '  ', '^', true) . PHP_EOL . PHP_EOL;
 
 echo "TEST:  basic usage with a valid array (qname, namespaceUri, attributes, and content), REPLACE_ENTITIES, multiline = true, indent = (2 spaces), linebreak = '^', and sortAttributes = false" . PHP_EOL;
-echo $util->createTagFromArray($tag4,  XML_UTIL2_REPLACE_ENTITIES, true, '  ', '^', false) . PHP_EOL . PHP_EOL;
+echo $util->createTagFromArray($tag4,  XML_Util2::REPLACE_ENTITIES, true, '  ', '^', false) . PHP_EOL . PHP_EOL;
 
 echo 'TEST:  cause a non-scalar error on the content tag' . PHP_EOL;
-echo $util->createTagFromArray($tag8) . PHP_EOL . PHP_EOL;
+try {
+    $util->createTagFromArray($tag8);
+
+    echo 'FAIL: Exception expected' . PHP_EOL . PHP_EOL;
+} catch (XML_Util2_Exception $e) {
+    echo $e->getMessage() . PHP_EOL . PHP_EOL;
+}
 
 echo 'TEST:  handle an array of namespaces being passed' . PHP_EOL;
 echo $util->createTagFromArray($tag9) . PHP_EOL . PHP_EOL;

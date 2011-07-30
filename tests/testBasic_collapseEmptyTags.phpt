@@ -20,16 +20,16 @@ echo "TEST:  basic usage alongside non-empty tag" . PHP_EOL;
 echo $util->collapseEmptyTags($emptyTag . $otherTag) . PHP_EOL . PHP_EOL;
 
 echo "TEST:  one empty tag, with COLLAPSE_ALL set" . PHP_EOL;
-echo $util->collapseEmptyTags($emptyTag,  XML_UTIL2_COLLAPSE_ALL) . PHP_EOL . PHP_EOL;
+echo $util->collapseEmptyTags($emptyTag,  XML_Util2::COLLAPSE_ALL) . PHP_EOL . PHP_EOL;
 
 echo "TEST:  one empty tag alongside non-empty tag, with COLLAPSE_ALL set" . PHP_EOL;
-echo $util->collapseEmptyTags($emptyTag . $otherTag,  XML_UTIL2_COLLAPSE_ALL) . PHP_EOL . PHP_EOL;
+echo $util->collapseEmptyTags($emptyTag . $otherTag,  XML_Util2::COLLAPSE_ALL) . PHP_EOL . PHP_EOL;
 
 echo "TEST:  one empty tag, with COLLAPSE_XHTML_ONLY set" . PHP_EOL;
-echo $util->collapseEmptyTags($emptyTag,  XML_UTIL2_COLLAPSE_XHTML_ONLY) . PHP_EOL . PHP_EOL;
+echo $util->collapseEmptyTags($emptyTag,  XML_Util2::COLLAPSE_XHTML_ONLY) . PHP_EOL . PHP_EOL;
 
 echo "TEST:  one empty tag alongside non-empty tag, with COLLAPSE_XHTML_ONLY set" . PHP_EOL;
-echo $util->collapseEmptyTags($emptyTag . $xhtmlTag . $otherTag,  XML_UTIL2_COLLAPSE_XHTML_ONLY) . PHP_EOL . PHP_EOL;
+echo $util->collapseEmptyTags($emptyTag . $xhtmlTag . $otherTag,  XML_Util2::COLLAPSE_XHTML_ONLY) . PHP_EOL . PHP_EOL;
 ?>
 --EXPECT--
 =====XML_Util2::collapseEmptyTags() basic tests=====

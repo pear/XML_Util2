@@ -12,9 +12,9 @@ echo '=====XML_Util2 tests for Bug #5392 "encoding of ISO-8859-1 is the only sup
 echo "TEST:  test case provided in bug report" . PHP_EOL;
 $data = 'This data contains special chars like <, >, & and " as well as ä, ö, ß, à and ê';
 
-$replaced = $util->replaceEntities($data,  XML_UTIL2_ENTITIES_HTML, 'UTF-8');
+$replaced = $util->replaceEntities($data,  XML_Util2::ENTITIES_HTML, 'UTF-8');
 
-$reversed = $util->reverseEntities($replaced,  XML_UTIL2_ENTITIES_HTML, 'UTF-8');
+$reversed = $util->reverseEntities($replaced,  XML_Util2::ENTITIES_HTML, 'UTF-8');
 
 echo $replaced . PHP_EOL;
 echo $reversed . PHP_EOL;

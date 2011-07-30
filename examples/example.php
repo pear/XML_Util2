@@ -245,7 +245,7 @@
     );
 
     print 'creating a tag with CData section:<br>';
-    print htmlentities($util->createTagFromArray($tag, XML_UTIL_CDATA_SECTION));
+    print htmlentities($util->createTagFromArray($tag, XML_Util2::CDATA_SECTION));
     print "\n<br><br>\n";
 
     /**
@@ -260,7 +260,7 @@
     );
 
     print 'creating a tag with HTML entities:<br>';
-    print htmlentities($util->createTagFromArray($tag, XML_UTIL_ENTITIES_HTML));
+    print htmlentities($util->createTagFromArray($tag, XML_Util2::ENTITIES_HTML));
     print "\n<br><br>\n";
 
     /**

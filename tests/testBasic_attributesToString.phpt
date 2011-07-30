@@ -14,14 +14,14 @@ $sort1 = array(
     'multiline' => true, 
     'indent'    => '----', 
     'linebreak' => "^", 
-    'entities'  =>  XML_UTIL2_ENTITIES_XML, 
+    'entities'  =>  XML_Util2::ENTITIES_XML, 
     'sort'      => true
 );
 $sort2 = array(
     'multiline' => true, 
     'indent'    => '----', 
     'linebreak' => "^", 
-    'entities'  =>  XML_UTIL2_ENTITIES_XML, 
+    'entities'  =>  XML_Util2::ENTITIES_XML, 
 );
 
 echo "TEST:  basic usage" . PHP_EOL;
@@ -54,22 +54,22 @@ echo $util->attributesToString($att, $sort2) . PHP_EOL . PHP_EOL;
 echo "TEST:  do not replace entities" . PHP_EOL;
 $arr = array("foo" => "b@&r", "boo" => "b><z");
 echo $util->attributesToString($arr, true, false, '    ', PHP_EOL, 
-     XML_UTIL2_ENTITIES_NONE) . PHP_EOL . PHP_EOL;
+     XML_Util2::ENTITIES_NONE) . PHP_EOL . PHP_EOL;
 
 echo "TEST:  replace all XML entities" . PHP_EOL;
 $arr = array("foo" => "b@&r", "boo" => "b><z");
 echo $util->attributesToString($arr, true, false, '    ', PHP_EOL, 
-     XML_UTIL2_ENTITIES_XML) . PHP_EOL . PHP_EOL;
+     XML_Util2::ENTITIES_XML) . PHP_EOL . PHP_EOL;
 
 echo "TEST:  replace only required XML entities" . PHP_EOL;
 $arr = array("foo" => "b@&r", "boo" => "b><z");
 echo $util->attributesToString($arr, true, false, '    ', PHP_EOL, 
-     XML_UTIL2_ENTITIES_XML_REQUIRED) . PHP_EOL . PHP_EOL;
+     XML_Util2::ENTITIES_XML_REQUIRED) . PHP_EOL . PHP_EOL;
 
 echo "TEST:  replace HTML entities" . PHP_EOL;
 $arr = array("foo" => "b@&r", "boo" => "b><z");
 echo $util->attributesToString($arr, true, false, '    ', PHP_EOL, 
-     XML_UTIL2_ENTITIES_HTML) . PHP_EOL . PHP_EOL;
+     XML_Util2::ENTITIES_HTML) . PHP_EOL . PHP_EOL;
 ?>
 --EXPECT--
 =====XML_Util2::attributesToString() basic tests=====

@@ -8,9 +8,9 @@ Chuck Burgess <ashnazg@php.net>
 require_once 'XML' . DIRECTORY_SEPARATOR . 'Util2.php';
 $util = new XML_Util2();
 echo '=====XML_Util2::raiseError() basic tests=====' . PHP_EOL . PHP_EOL;
-
-$error = $util->raiseError("I am an error", 12345);
-if (is_a($error, 'PEAR_Error')) {
+try {
+    $util->raiseError("I am an error", 12345);
+} catch (XML_Util2_Exception $error) {
     print "PEAR Error: " . $error->getMessage() . PHP_EOL;
 }
 ?>

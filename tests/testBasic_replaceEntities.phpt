@@ -19,31 +19,31 @@ echo "TEST:  basic usage but with bogus \$replaceEntities arg" . PHP_EOL;
 echo $util->replaceEntities($data, 'I_AM_BOGUS') . PHP_EOL . PHP_EOL;
 
 echo "TEST:  basic usage with ENTITIES_XML" . PHP_EOL;
-echo $util->replaceEntities($data,  XML_UTIL2_ENTITIES_XML) . PHP_EOL . PHP_EOL;
+echo $util->replaceEntities($data,  XML_Util2::ENTITIES_XML) . PHP_EOL . PHP_EOL;
 
 echo "TEST:  basic usage with ENTITIES_XML and UTF-8" . PHP_EOL;
-echo $util->replaceEntities($data,  XML_UTIL2_ENTITIES_XML, 'UTF-8') . PHP_EOL . PHP_EOL;
+echo $util->replaceEntities($data,  XML_Util2::ENTITIES_XML, 'UTF-8') . PHP_EOL . PHP_EOL;
 
 echo "TEST:  utf8 usage with ENTITIES_XML and UTF-8" . PHP_EOL;
-echo $util->replaceEntities($utf8,  XML_UTIL2_ENTITIES_XML, 'UTF-8') . PHP_EOL . PHP_EOL;
+echo $util->replaceEntities($utf8,  XML_Util2::ENTITIES_XML, 'UTF-8') . PHP_EOL . PHP_EOL;
 
 echo "TEST:  basic usage with ENTITIES_XML_REQUIRED" . PHP_EOL;
-echo $util->replaceEntities($data,  XML_UTIL2_ENTITIES_XML_REQUIRED) . PHP_EOL . PHP_EOL;
+echo $util->replaceEntities($data,  XML_Util2::ENTITIES_XML_REQUIRED) . PHP_EOL . PHP_EOL;
 
 echo "TEST:  basic usage with ENTITIES_XML_REQUIRED and UTF-8" . PHP_EOL;
-echo $util->replaceEntities($data,  XML_UTIL2_ENTITIES_XML_REQUIRED, 'UTF-8') . PHP_EOL . PHP_EOL;
+echo $util->replaceEntities($data,  XML_Util2::ENTITIES_XML_REQUIRED, 'UTF-8') . PHP_EOL . PHP_EOL;
 
 echo "TEST:  utf8 usage with ENTITIES_XML_REQUIRED and UTF-8" . PHP_EOL;
-echo $util->replaceEntities($utf8,  XML_UTIL2_ENTITIES_XML_REQUIRED, 'UTF-8') . PHP_EOL . PHP_EOL;
+echo $util->replaceEntities($utf8,  XML_Util2::ENTITIES_XML_REQUIRED, 'UTF-8') . PHP_EOL . PHP_EOL;
 
 echo "TEST:  basic usage with ENTITIES_HTML" . PHP_EOL;
-echo $util->replaceEntities($data,  XML_UTIL2_ENTITIES_HTML) . PHP_EOL . PHP_EOL;
+echo $util->replaceEntities($data,  XML_Util2::ENTITIES_HTML) . PHP_EOL . PHP_EOL;
 
 echo "TEST:  basic usage with ENTITIES_HTML and UTF-8" . PHP_EOL;
-echo $util->replaceEntities($data,  XML_UTIL2_ENTITIES_HTML, 'UTF-8') . PHP_EOL . PHP_EOL;
+echo $util->replaceEntities($data,  XML_Util2::ENTITIES_HTML, 'UTF-8') . PHP_EOL . PHP_EOL;
 
 echo "TEST:  utf8 usage with ENTITIES_HTML and UTF-8" . PHP_EOL;
-echo $util->replaceEntities($utf8,  XML_UTIL2_ENTITIES_HTML, 'UTF-8') . PHP_EOL . PHP_EOL;
+echo $util->replaceEntities($utf8,  XML_Util2::ENTITIES_HTML, 'UTF-8') . PHP_EOL . PHP_EOL;
 ?>
 --EXPECT--
 =====XML_Util2::replaceEntities() basic tests=====

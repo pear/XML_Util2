@@ -10,27 +10,30 @@ $util = new XML_Util2();
 echo '=====XML_Util2::isValidName() basic tests=====' . PHP_EOL . PHP_EOL;
 
 echo "TEST:  valid tag" . PHP_EOL;
-$result = $util->isValidName("alpha-x_y_z.123");
-if (is_a($result, 'PEAR_Error')) {
-    print "Invalid XML name: " . $result->getMessage() . PHP_EOL . PHP_EOL;
-} else {
+try {
+    $result = $util->isValidName("alpha-x_y_z.123");
+
     print "Valid XML name." . PHP_EOL . PHP_EOL;
+} catch (XML_Util2_Exception $e) {
+    print "Invalid XML name: " . $e->getMessage() . PHP_EOL . PHP_EOL;
 }
 
 echo "TEST:  invalid tag" . PHP_EOL;
-$result = $util->isValidName("invalidTag?");
-if (is_a($result, 'PEAR_Error')) {
-    print "Invalid XML name: " . $result->getMessage() . PHP_EOL . PHP_EOL;
-} else {
+try {
+    $result = $util->isValidName("invalidTag?");
+
     print "Valid XML name." . PHP_EOL . PHP_EOL;
+} catch (XML_Util2_Exception $e) {
+    print "Invalid XML name: " . $e->getMessage() . PHP_EOL . PHP_EOL;
 }
 
 echo "TEST:  invalid tag that doesn't start with a letter" . PHP_EOL;
-$result = $util->isValidName("1234five");
-if (is_a($result, 'PEAR_Error')) {
-    print "Invalid XML name: " . $result->getMessage() . PHP_EOL . PHP_EOL;
-} else {
+try {
+    $result = $util->isValidName("1234five");
+
     print "Valid XML name." . PHP_EOL . PHP_EOL;
+} catch (XML_Util2_Exception $e) {
+    print "Invalid XML name: " . $e->getMessage() . PHP_EOL . PHP_EOL;
 }
 
 ?>

@@ -11,7 +11,7 @@ echo '=====XML_Util2 tests for Bug #4950 "Incorrect CDATA serializing"=====' . P
 
 echo "TEST:  test case provided in bug report" . PHP_EOL;
 echo $util->createTag("test", array(), "Content ]]></test> here!",
-    null, XML_UTIL2_CDATA_SECTION) . PHP_EOL;
+    null, XML_Util2::CDATA_SECTION) . PHP_EOL;
 
 ?>
 --EXPECT--

@@ -36,7 +36,7 @@ echo $util->createTag(
     array("foo" => "bar"), 
     "This is inside the tag and has < & @ > in it",
     "http://www.w3c.org/myNs#",
-     XML_UTIL2_REPLACE_ENTITIES
+     XML_Util2::REPLACE_ENTITIES
 ) . PHP_EOL . PHP_EOL;
 
 echo "TEST:  tag with attribute, content, namespace, and CDATA_SECTION" . PHP_EOL;
@@ -45,7 +45,7 @@ echo $util->createTag(
     array("foo" => "bar"), 
     "This is inside the tag and has < & @ > in it",
     "http://www.w3c.org/myNs#",
-     XML_UTIL2_CDATA_SECTION
+     XML_Util2::CDATA_SECTION
 ) . PHP_EOL . PHP_EOL;
 
 echo "TEST:  tag with attribute, content, namespace, REPLACE_ENTITIES, and multiline = false" . PHP_EOL;
@@ -54,7 +54,7 @@ echo $util->createTag(
     array("foo" => "bar"), 
     "This is inside the tag and has < & @ > in it",
     "http://www.w3c.org/myNs#",
-     XML_UTIL2_REPLACE_ENTITIES,
+     XML_Util2::REPLACE_ENTITIES,
     false
 ) . PHP_EOL . PHP_EOL;
 
@@ -64,7 +64,7 @@ echo $util->createTag(
     array("foo" => "bar"), 
     "This is inside the tag and has < & @ > in it",
     "http://www.w3c.org/myNs#",
-     XML_UTIL2_REPLACE_ENTITIES,
+     XML_Util2::REPLACE_ENTITIES,
     true
 ) . PHP_EOL . PHP_EOL;
 
@@ -74,7 +74,7 @@ echo $util->createTag(
     array("foo" => "bar"), 
     "This is inside the tag and has < & @ > in it",
     "http://www.w3c.org/myNs#",
-     XML_UTIL2_REPLACE_ENTITIES,
+     XML_Util2::REPLACE_ENTITIES,
     true,
     '  '
 ) . PHP_EOL . PHP_EOL;
@@ -85,7 +85,7 @@ echo $util->createTag(
     array("foo" => "bar"), 
     "This is inside the tag and has < & @ > in it",
     "http://www.w3c.org/myNs#",
-     XML_UTIL2_REPLACE_ENTITIES,
+     XML_Util2::REPLACE_ENTITIES,
     true,
     '  ',
     '^'
@@ -97,7 +97,7 @@ echo $util->createTag(
     array("foo" => "bar", "boo" => "baz"), 
     "This is inside the tag and has < & @ > in it",
     "http://www.w3c.org/myNs#",
-     XML_UTIL2_REPLACE_ENTITIES,
+     XML_Util2::REPLACE_ENTITIES,
     true,
     '  ',
     '^',
@@ -110,7 +110,7 @@ echo $util->createTag(
     array("foo" => "bar", "boo" => "baz"), 
     "This is inside the tag and has < & @ > in it",
     "http://www.w3c.org/myNs#",
-     XML_UTIL2_REPLACE_ENTITIES,
+     XML_Util2::REPLACE_ENTITIES,
     true,
     '  ',
     '^',

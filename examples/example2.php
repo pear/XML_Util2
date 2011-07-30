@@ -120,7 +120,7 @@
     print 'creating a tag with qualified name and namespaceUri:<br>';
     print '<pre>';
     print htmlentities($util->createTagFromArray($tag, 
-        XML_UTIL2_REPLACE_ENTITIES, true));
+        XML_Util2::REPLACE_ENTITIES, true));
     print '</pre>';
     print "\n<br><br>\n";
 
@@ -131,7 +131,7 @@
     print 'creating a attribute string, '
         . 'entities in values already had been replaced:<br>';
     print htmlentities($util->attributesToString($atts, 
-        true, false, false, false, XML_UTIL2_ENTITIES_NONE));
+        true, false, false, false, XML_Util2::ENTITIES_NONE));
     print "\n<br><br>\n";
 
     /**
@@ -140,7 +140,7 @@
     $atts = array('series' => 'Starsky &amp; Hutch', 'channel' => 'ABC');
     print 'using the array-syntax for attributesToString()<br>';
     print htmlentities($util->attributesToString($atts, 
-        array('entities' => XML_UTIL2_ENTITIES_NONE)));
+        array('entities' => XML_Util2::ENTITIES_NONE)));
     print "\n<br><br>\n";
 
 

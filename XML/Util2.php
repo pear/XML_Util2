@@ -50,69 +50,6 @@
 require_once 'XML/Util2/Exception.php';
 
 /**
- * error code for invalid chars in XML name
- */
-define('XML_UTIL2_ERROR_INVALID_CHARS', 51);
-
-/**
- * error code for invalid chars in XML name
- */
-define('XML_UTIL2_ERROR_INVALID_START', 52);
-
-/**
- * error code for non-scalar tag content
- */
-define('XML_UTIL2_ERROR_NON_SCALAR_CONTENT', 60);
-
-/**
- * error code for missing tag name
- */
-define('XML_UTIL2_ERROR_NO_TAG_NAME', 61);
-
-/**
- * replace XML entities
- */
-define('XML_UTIL2_REPLACE_ENTITIES', 1);
-
-/**
- * embedd content in a CData Section
- */
-define('XML_UTIL2_CDATA_SECTION', 5);
-
-/**
- * do not replace entitites
- */
-define('XML_UTIL2_ENTITIES_NONE', 0);
-
-/**
- * replace all XML entitites
- * This setting will replace <, >, ", ' and &
- */
-define('XML_UTIL2_ENTITIES_XML', 1);
-
-/**
- * replace only required XML entitites
- * This setting will replace <, " and &
- */
-define('XML_UTIL2_ENTITIES_XML_REQUIRED', 2);
-
-/**
- * replace HTML entitites
- * @link http://www.php.net/htmlentities
- */
-define('XML_UTIL2_ENTITIES_HTML', 3);
-
-/**
- * Collapse all empty tags.
- */
-define('XML_UTIL2_COLLAPSE_ALL', 1);
-
-/**
- * Collapse only empty XHTML tags that have no end tag.
- */
-define('XML_UTIL2_COLLAPSE_XHTML_ONLY', 2);
-
-/**
  * utility class for working with XML documents
  *
 
@@ -126,6 +63,69 @@ define('XML_UTIL2_COLLAPSE_XHTML_ONLY', 2);
  */
 class XML_Util2
 {
+    /**
+     * error code for invalid chars in XML name
+     */
+    const ERROR_INVALID_CHARS = 51;
+
+    /**
+     * error code for invalid chars in XML name
+     */
+    const ERROR_INVALID_START = 52;
+
+    /**
+     * error code for non-scalar tag content
+     */
+    const ERROR_NON_SCALAR_CONTENT = 60;
+
+    /**
+     * error code for missing tag name
+     */
+    const ERROR_NO_TAG_NAME = 61;
+
+    /**
+     * replace XML entities
+     */
+    const REPLACE_ENTITIES = 1;
+
+    /**
+     * embedd content in a CData Section
+     */
+    const CDATA_SECTION = 5;
+
+    /**
+     * do not replace entitites
+     */
+    const ENTITIES_NONE = 0;
+
+    /**
+     * replace all XML entitites
+     * This setting will replace <, >, ", ' and &
+     */
+    const ENTITIES_XML = 1;
+
+    /**
+     * replace only required XML entitites
+     * This setting will replace <, " and &
+     */
+    const ENTITIES_XML_REQUIRED = 2;
+
+    /**
+     * replace HTML entitites
+     * @link http://www.php.net/htmlentities
+     */
+    const ENTITIES_HTML = 3;
+
+    /**
+     * Collapse all empty tags.
+     */
+    const COLLAPSE_ALL = 1;
+
+    /**
+     * Collapse only empty XHTML tags that have no end tag.
+     */
+    const COLLAPSE_XHTML_ONLY = 2;
+
     /**
      * return API version
      *
@@ -161,7 +161,7 @@ class XML_Util2
      * // replace XML entites in UTF-8:
      * $string = $util->replaceEntities(
      *     'This string contains < & > as well as ä, ö, ß, à and ê',
-     *     XML_UTIL2_ENTITIES_HTML,
+     *     XML_Util2::ENTITIES_HTML,
      *     'UTF-8'
      * );
      * </code>
@@ -169,9 +169,9 @@ class XML_Util2
      * @param string $string          string where XML special chars
      *                                should be replaced
      * @param int    $replaceEntities setting for entities in attribute values
-     *                                (one of XML_UTIL2_ENTITIES_XML,
-     *                                XML_UTIL2_ENTITIES_XML_REQUIRED,
-     *                                XML_UTIL2_ENTITIES_HTML)
+     *                                (one of XML_Util2::ENTITIES_XML,
+     *                                XML_Util2::ENTITIES_XML_REQUIRED,
+     *                                XML_Util2::ENTITIES_HTML)
      * @param string $encoding        encoding value (if any)...
      *                                must be a valid encoding as determined
      *                                by the htmlentities() function
@@ -180,11 +180,11 @@ class XML_Util2
      * @access public
      * @see reverseEntities()
      */
-    public function replaceEntities($string, $replaceEntities = XML_UTIL2_ENTITIES_XML,
+    public function replaceEntities($string, $replaceEntities = XML_Util2::ENTITIES_XML,
         $encoding = 'ISO-8859-1')
     {
         switch ($replaceEntities) {
-        case XML_UTIL2_ENTITIES_XML:
+        case XML_Util2::ENTITIES_XML:
             return strtr($string, array(
                 '&'  => '&amp;',
                 '>'  => '&gt;',
@@ -192,13 +192,13 @@ class XML_Util2
                 '"'  => '&quot;',
                 '\'' => '&apos;' ));
             break;
-        case XML_UTIL2_ENTITIES_XML_REQUIRED:
+        case XML_Util2::ENTITIES_XML_REQUIRED:
             return strtr($string, array(
                 '&' => '&amp;',
                 '<' => '&lt;',
                 '"' => '&quot;' ));
             break;
-        case XML_UTIL2_ENTITIES_HTML:
+        case XML_Util2::ENTITIES_HTML:
             return htmlentities($string, ENT_COMPAT, $encoding);
             break;
         }
@@ -230,7 +230,7 @@ class XML_Util2
      * $string = $util->reverseEntities(
      *     'This string contains &lt; &amp; &gt; as well as'
      *     . ' &auml;, &ouml;, &szlig;, &agrave; and &ecirc;',
-     *     XML_UTIL2_ENTITIES_HTML,
+     *     XML_Util2::ENTITIES_HTML,
      *     'UTF-8'
      * );
      * </code>
@@ -238,9 +238,9 @@ class XML_Util2
      * @param string $string          string where XML special chars
      *                                should be replaced
      * @param int    $replaceEntities setting for entities in attribute values
-     *                                (one of XML_UTIL2_ENTITIES_XML,
-     *                                XML_UTIL2_ENTITIES_XML_REQUIRED,
-     *                                XML_UTIL2_ENTITIES_HTML)
+     *                                (one of XML_Util2::ENTITIES_XML,
+     *                                XML_Util2::ENTITIES_XML_REQUIRED,
+     *                                XML_Util2::ENTITIES_HTML)
      * @param string $encoding        encoding value (if any)...
      *                                must be a valid encoding as determined
      *                                by the html_entity_decode() function
@@ -249,11 +249,11 @@ class XML_Util2
      * @access public
      * @see replaceEntities()
      */
-    public function reverseEntities($string, $replaceEntities = XML_UTIL2_ENTITIES_XML,
+    public function reverseEntities($string, $replaceEntities = XML_Util2::ENTITIES_XML,
         $encoding = 'ISO-8859-1')
     {
         switch ($replaceEntities) {
-        case XML_UTIL2_ENTITIES_XML:
+        case XML_Util2::ENTITIES_XML:
             return strtr($string, array(
                 '&amp;'  => '&',
                 '&gt;'   => '>',
@@ -261,13 +261,13 @@ class XML_Util2
                 '&quot;' => '"',
                 '&apos;' => '\'' ));
             break;
-        case XML_UTIL2_ENTITIES_XML_REQUIRED:
+        case XML_Util2::ENTITIES_XML_REQUIRED:
             return strtr($string, array(
                 '&amp;'  => '&',
                 '&lt;'   => '<',
                 '&quot;' => '"' ));
             break;
-        case XML_UTIL2_ENTITIES_HTML:
+        case XML_Util2::ENTITIES_HTML:
             return html_entity_decode($string, ENT_COMPAT, $encoding);
             break;
         }
@@ -382,10 +382,10 @@ class XML_Util2
      * @param string     $linebreak  string used for linebreaks of
      *                               multiline attributes
      * @param int        $entities   setting for entities in attribute values
-     *                               (one of XML_UTIL2_ENTITIES_NONE,
-     *                               XML_UTIL2_ENTITIES_XML,
-     *                               XML_UTIL2_ENTITIES_XML_REQUIRED,
-     *                               XML_UTIL2_ENTITIES_HTML)
+     *                               (one of XML_Util2::ENTITIES_NONE,
+     *                               XML_Util2::ENTITIES_XML,
+     *                               XML_Util2::ENTITIES_XML_REQUIRED,
+     *                               XML_Util2::ENTITIES_HTML)
      *
      * @return string string representation of the attributes
      * @access public
@@ -393,7 +393,7 @@ class XML_Util2
      * @todo allow sort also to be an options array
      */
     public function attributesToString($attributes, $sort = true, $multiline = false,
-        $indent = '    ', $linebreak = "\n", $entities = XML_UTIL2_ENTITIES_XML)
+        $indent = '    ', $linebreak = "\n", $entities = XML_Util2::ENTITIES_XML)
     {
         /*
          * second parameter may be an array
@@ -424,9 +424,9 @@ class XML_Util2
             }
             if ( !$multiline || count($attributes) == 1) {
                 foreach ($attributes as $key => $value) {
-                    if ($entities != XML_UTIL2_ENTITIES_NONE) {
-                        if ($entities === XML_UTIL2_CDATA_SECTION) {
-                            $entities = XML_UTIL2_ENTITIES_XML;
+                    if ($entities != XML_Util2::ENTITIES_NONE) {
+                        if ($entities === XML_Util2::CDATA_SECTION) {
+                            $entities = XML_Util2::ENTITIES_XML;
                         }
                         $value = $this->replaceEntities($value, $entities);
                     }
@@ -435,7 +435,7 @@ class XML_Util2
             } else {
                 $first = true;
                 foreach ($attributes as $key => $value) {
-                    if ($entities != XML_UTIL2_ENTITIES_NONE) {
+                    if ($entities != XML_Util2::ENTITIES_NONE) {
                         $value = $this->replaceEntities($value, $entities);
                     }
                     if ($first) {
@@ -454,17 +454,17 @@ class XML_Util2
      * Collapses empty tags.
      *
      * @param string $xml  XML
-     * @param int    $mode Whether to collapse all empty tags (XML_UTIL2_COLLAPSE_ALL)
-     *                      or only XHTML (XML_UTIL2_COLLAPSE_XHTML_ONLY) ones.
+     * @param int    $mode Whether to collapse all empty tags (XML_Util2::COLLAPSE_ALL)
+     *                      or only XHTML (XML_Util2::COLLAPSE_XHTML_ONLY) ones.
      *
      * @return string XML
      * @access public
      * @todo PEAR CS - unable to avoid "space after open parens" error
      *       in the IF branch
      */
-    public function collapseEmptyTags($xml, $mode = XML_UTIL2_COLLAPSE_ALL)
+    public function collapseEmptyTags($xml, $mode = XML_Util2::COLLAPSE_ALL)
     {
-        if ($mode == XML_UTIL2_COLLAPSE_XHTML_ONLY) {
+        if ($mode == XML_Util2::COLLAPSE_XHTML_ONLY) {
             return preg_replace(
                 '/<(area|base(?:font)?|br|col|frame|hr|img|input|isindex|link|meta|'
                 . 'param)([^>]*)><\/\\1>/s',
@@ -514,7 +514,7 @@ class XML_Util2
      * @uses createTagFromArray() to create the tag
      */
     public function createTag($qname, $attributes = array(), $content = null,
-        $namespaceUri = null, $replaceEntities = XML_UTIL2_REPLACE_ENTITIES,
+        $namespaceUri = null, $replaceEntities = XML_Util2::REPLACE_ENTITIES,
         $multiline = false, $indent = '_auto', $linebreak = "\n",
         $sortAttributes = true)
     {
@@ -597,19 +597,19 @@ class XML_Util2
      * @uses createCDataSection()
      * @uses raiseError()
      */
-    public function createTagFromArray($tag, $replaceEntities = XML_UTIL2_REPLACE_ENTITIES,
+    public function createTagFromArray($tag, $replaceEntities = XML_Util2::REPLACE_ENTITIES,
         $multiline = false, $indent = '_auto', $linebreak = "\n",
         $sortAttributes = true)
     {
         if (isset($tag['content']) && !is_scalar($tag['content'])) {
             return $this->raiseError('Supplied non-scalar value as tag content',
-            XML_UTIL2_ERROR_NON_SCALAR_CONTENT);
+            XML_Util2::ERROR_NON_SCALAR_CONTENT);
         }
 
         if (!isset($tag['qname']) && !isset($tag['localPart'])) {
             return $this->raiseError('You must either supply a qualified name '
                 . '(qname) or local tag name (localPart).',
-                XML_UTIL2_ERROR_NO_TAG_NAME);
+                XML_Util2::ERROR_NO_TAG_NAME);
         }
 
         // if no attributes hav been set, use empty attributes
@@ -668,9 +668,9 @@ class XML_Util2
             $tag = sprintf('<%s%s />', $tag['qname'], $attList);
         } else {
             switch ($replaceEntities) {
-            case XML_UTIL2_ENTITIES_NONE:
+            case XML_Util2::ENTITIES_NONE:
                 break;
-            case XML_UTIL2_CDATA_SECTION:
+            case XML_Util2::CDATA_SECTION:
                 $tag['content'] = $this->createCDataSection($tag['content']);
                 break;
             default:
@@ -892,7 +892,7 @@ class XML_Util2
         // check for invalid chars
         if (!preg_match('/^[[:alpha:]_]\\z/', $string{0})) {
             return $this->raiseError('XML names may only start with letter '
-                . 'or underscore', XML_UTIL2_ERROR_INVALID_START);
+                . 'or underscore', XML_Util2::ERROR_INVALID_START);
         }
 
         // check for invalid chars
@@ -901,7 +901,7 @@ class XML_Util2
         ) {
             return $this->raiseError('XML names may only contain alphanumeric '
                 . 'chars, period, hyphen, colon and underscores',
-                XML_UTIL2_ERROR_INVALID_CHARS);
+                XML_Util2::ERROR_INVALID_CHARS);
         }
         // XML name is valid
         return true;
