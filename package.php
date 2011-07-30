@@ -52,7 +52,7 @@ $package->setPhpDep('5.1.0');
 $package->setPearinstallerDep('1.9.3');
 $package->addExtensionDep('required', 'pcre');
 $package->addIgnore(array('package.php', 'package.xml'));
-$package->addReplacement('Util2.php', 'package-info', '@version@', 'version');
+$package->addReplacement('XML/Util2.php', 'package-info', '@version@', 'version');
 $package->generateContents();
 
 if ($_SERVER['argv'][1] == 'make') {

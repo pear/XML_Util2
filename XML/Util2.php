@@ -47,6 +47,8 @@
  * @link      http://pear.php.net/package/XML_Util2
  */
 
+require_once 'XML/Util2/Exception.php';
+
 /**
  * error code for invalid chars in XML name
  */
@@ -906,10 +908,7 @@ class XML_Util2
     }
 
     /**
-     * replacement for $this->raiseError
-     *
-     * Avoids the necessity to always require
-     * PEAR.php
+     * 
      *
      * @param string $msg  error message
      * @param int    $code error code
@@ -920,8 +919,7 @@ class XML_Util2
      */
     public function raiseError($msg, $code)
     {
-        require_once 'PEAR.php';
-        return PEAR::raiseError($msg, $code);
+        throw new XML_Util2_Exception($msg, $code);
     }
 }
 ?>
