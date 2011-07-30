@@ -30,7 +30,7 @@ $package = PEAR_PackageFileManager2::importOptions(
     'packagefile'       => 'package.xml',
     'packagedirectory'  => '.'));
 
-if (PEAR::isError($result)) {
+if (PEAR::isError($package)) {
     echo $result->getMessage();
     die();
 }
