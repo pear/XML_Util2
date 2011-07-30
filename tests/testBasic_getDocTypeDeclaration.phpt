@@ -1,18 +1,19 @@
 --TEST--
-XML_Util::getDocTypeDeclaration() basic tests
+XML_Util2::getDocTypeDeclaration() basic tests
 --CREDITS--
 Chuck Burgess <ashnazg@php.net>
 # created for v1.2.0a1 2008-05-04
 --FILE--
 <?php
-require_once 'XML' . DIRECTORY_SEPARATOR . 'Util.php';
-echo '=====XML_Util::getDocTypeDeclaration() basic tests=====' . PHP_EOL . PHP_EOL;
+require_once 'XML' . DIRECTORY_SEPARATOR . 'Util2.php';
+$util = new XML_Util2();
+echo '=====XML_Util2::getDocTypeDeclaration() basic tests=====' . PHP_EOL . PHP_EOL;
 
 echo "TEST:  using root only" . PHP_EOL;
-echo XML_Util::getDocTypeDeclaration("rootTag") . PHP_EOL . PHP_EOL;
+echo $util->getDocTypeDeclaration("rootTag") . PHP_EOL . PHP_EOL;
 
 echo "TEST:  using root and a string URI" . PHP_EOL;
-echo XML_Util::getDocTypeDeclaration("rootTag", "myDocType.dtd") . PHP_EOL . PHP_EOL;
+echo $util->getDocTypeDeclaration("rootTag", "myDocType.dtd") . PHP_EOL . PHP_EOL;
 
 $uri = array(
     'uri' => 'http://pear.php.net/dtd/package-1.0',
@@ -21,13 +22,13 @@ $uri = array(
 $dtdEntry = '<!ELEMENT additionalInfo (#PCDATA)>';
 
 echo "TEST:  using root and an array URI" . PHP_EOL;
-echo XML_Util::getDocTypeDeclaration("rootTag", $uri) . PHP_EOL . PHP_EOL;
+echo $util->getDocTypeDeclaration("rootTag", $uri) . PHP_EOL . PHP_EOL;
 
 echo "TEST:  using root and an array URI and an internal DTD entry" . PHP_EOL;
-echo XML_Util::getDocTypeDeclaration("rootTag", $uri, $dtdEntry) . PHP_EOL . PHP_EOL;
+echo $util->getDocTypeDeclaration("rootTag", $uri, $dtdEntry) . PHP_EOL . PHP_EOL;
 ?>
 --EXPECT--
-=====XML_Util::getDocTypeDeclaration() basic tests=====
+=====XML_Util2::getDocTypeDeclaration() basic tests=====
 
 TEST:  using root only
 <!DOCTYPE rootTag>

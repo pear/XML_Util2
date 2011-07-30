@@ -1,28 +1,29 @@
 --TEST--
-XML_Util::createTag() basic tests
+XML_Util2::createTag() basic tests
 --CREDITS--
 Chuck Burgess <ashnazg@php.net>
 # created for v1.2.0a1 2008-05-04
 --FILE--
 <?php
-require_once 'XML' . DIRECTORY_SEPARATOR . 'Util.php';
-echo '=====XML_Util::createTag() basic tests=====' . PHP_EOL . PHP_EOL;
+require_once 'XML' . DIRECTORY_SEPARATOR . 'Util2.php';
+$util = new XML_Util2();
+echo '=====XML_Util2::createTag() basic tests=====' . PHP_EOL . PHP_EOL;
 
 echo "TEST:  tag with attribute" . PHP_EOL;
-echo XML_Util::createTag(
+echo $util->createTag(
     "myNs:myTag", 
     array("foo" => "bar")
 ) . PHP_EOL . PHP_EOL;
 
 echo "TEST:  tag with attribute and content" . PHP_EOL;
-echo XML_Util::createTag(
+echo $util->createTag(
     "myNs:myTag", 
     array("foo" => "bar"), 
     "This is inside the tag"
 ) . PHP_EOL . PHP_EOL;
 
 echo "TEST:  tag with attribute, content, and namespace" . PHP_EOL;
-echo XML_Util::createTag(
+echo $util->createTag(
     "myNs:myTag", 
     array("foo" => "bar"), 
     "This is inside the tag",
@@ -30,73 +31,73 @@ echo XML_Util::createTag(
 ) . PHP_EOL . PHP_EOL;
 
 echo "TEST:  tag with attribute, content, namespace, and REPLACE_ENTITIES" . PHP_EOL;
-echo XML_Util::createTag(
+echo $util->createTag(
     "myNs:myTag", 
     array("foo" => "bar"), 
     "This is inside the tag and has < & @ > in it",
     "http://www.w3c.org/myNs#",
-    XML_UTIL_REPLACE_ENTITIES
+     XML_UTIL2_REPLACE_ENTITIES
 ) . PHP_EOL . PHP_EOL;
 
 echo "TEST:  tag with attribute, content, namespace, and CDATA_SECTION" . PHP_EOL;
-echo XML_Util::createTag(
+echo $util->createTag(
     "myNs:myTag", 
     array("foo" => "bar"), 
     "This is inside the tag and has < & @ > in it",
     "http://www.w3c.org/myNs#",
-    XML_UTIL_CDATA_SECTION
+     XML_UTIL2_CDATA_SECTION
 ) . PHP_EOL . PHP_EOL;
 
 echo "TEST:  tag with attribute, content, namespace, REPLACE_ENTITIES, and multiline = false" . PHP_EOL;
-echo XML_Util::createTag(
+echo $util->createTag(
     "myNs:myTag", 
     array("foo" => "bar"), 
     "This is inside the tag and has < & @ > in it",
     "http://www.w3c.org/myNs#",
-    XML_UTIL_REPLACE_ENTITIES,
+     XML_UTIL2_REPLACE_ENTITIES,
     false
 ) . PHP_EOL . PHP_EOL;
 
 echo "TEST:  tag with attribute, content, namespace, REPLACE_ENTITIES, and multiline = true" . PHP_EOL;
-echo XML_Util::createTag(
+echo $util->createTag(
     "myNs:myTag", 
     array("foo" => "bar"), 
     "This is inside the tag and has < & @ > in it",
     "http://www.w3c.org/myNs#",
-    XML_UTIL_REPLACE_ENTITIES,
+     XML_UTIL2_REPLACE_ENTITIES,
     true
 ) . PHP_EOL . PHP_EOL;
 
 echo "TEST:  tag with attribute, content, namespace, REPLACE_ENTITIES, multiline = true, and indent = (2 spaces)" . PHP_EOL;
-echo XML_Util::createTag(
+echo $util->createTag(
     "myNs:myTag", 
     array("foo" => "bar"), 
     "This is inside the tag and has < & @ > in it",
     "http://www.w3c.org/myNs#",
-    XML_UTIL_REPLACE_ENTITIES,
+     XML_UTIL2_REPLACE_ENTITIES,
     true,
     '  '
 ) . PHP_EOL . PHP_EOL;
 
 echo "TEST:  tag with attribute, content, namespace, REPLACE_ENTITIES, multiline = true, indent = (2 spaces), and linebreak = '^'" . PHP_EOL;
-echo XML_Util::createTag(
+echo $util->createTag(
     "myNs:myTag", 
     array("foo" => "bar"), 
     "This is inside the tag and has < & @ > in it",
     "http://www.w3c.org/myNs#",
-    XML_UTIL_REPLACE_ENTITIES,
+     XML_UTIL2_REPLACE_ENTITIES,
     true,
     '  ',
     '^'
 ) . PHP_EOL . PHP_EOL;
 
 echo "TEST:  tag with attribute, content, namespace, REPLACE_ENTITIES, multiline = true, indent = (2 spaces), linebreak = '^', and sortAttributes = true" . PHP_EOL;
-echo XML_Util::createTag(
+echo $util->createTag(
     "myNs:myTag", 
     array("foo" => "bar", "boo" => "baz"), 
     "This is inside the tag and has < & @ > in it",
     "http://www.w3c.org/myNs#",
-    XML_UTIL_REPLACE_ENTITIES,
+     XML_UTIL2_REPLACE_ENTITIES,
     true,
     '  ',
     '^',
@@ -104,12 +105,12 @@ echo XML_Util::createTag(
 ) . PHP_EOL . PHP_EOL;
 
 echo "TEST:  tag with attribute, content, namespace, REPLACE_ENTITIES, multiline = true, indent = (2 spaces), linebreak = '^', and sortAttributes = false" . PHP_EOL;
-echo XML_Util::createTag(
+echo $util->createTag(
     "myNs:myTag", 
     array("foo" => "bar", "boo" => "baz"), 
     "This is inside the tag and has < & @ > in it",
     "http://www.w3c.org/myNs#",
-    XML_UTIL_REPLACE_ENTITIES,
+     XML_UTIL2_REPLACE_ENTITIES,
     true,
     '  ',
     '^',
@@ -117,7 +118,7 @@ echo XML_Util::createTag(
 ) . PHP_EOL . PHP_EOL;
 ?>
 --EXPECT--
-=====XML_Util::createTag() basic tests=====
+=====XML_Util2::createTag() basic tests=====
 
 TEST:  tag with attribute
 <myNs:myTag foo="bar" />

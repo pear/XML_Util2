@@ -5,9 +5,9 @@
 /**
  * Examples (file #1)
  *
- * several examples for the methods of XML_Util
+ * several examples for the methods of XML_Util2
  * 
- * PHP versions 4 and 5
+ * PHP version 5
  *
  * LICENSE:
  *
@@ -39,13 +39,13 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  * @category   XML
- * @package    XML_Util
+ * @package    XML_Util2
  * @subpackage Examples
  * @author     Stephan Schmidt <schst@php.net>
  * @copyright  2003-2008 Stephan Schmidt <schst@php.net>
  * @license    http://opensource.org/licenses/bsd-license New BSD License
  * @version    CVS: $Id$
- * @link       http://pear.php.net/package/XML_Util
+ * @link       http://pear.php.net/package/XML_Util2
  */
 
     /**
@@ -53,50 +53,52 @@
      */
     error_reporting(E_ALL);
 
-    require_once 'XML/Util.php';
+    require_once 'XML/Util2.php';
+
+    $util = new XML_Util2();
     
     /**
      * replacing XML entities
      */
     print 'replace XML entities:<br>';
-    print XML_Util::replaceEntities('This string contains < & >.');
+    print $util->replaceEntities('This string contains < & >.');
     print "\n<br><br>\n";
 
     /**
      * reversing XML entities
      */
     print 'replace XML entities:<br>';
-    print XML_Util::reverseEntities('This string contains &lt; &amp; &gt;.');
+    print $util->everseEntities('This string contains &lt; &amp; &gt;.');
     print "\n<br><br>\n";
 
     /**
      * building XML declaration
      */
     print 'building XML declaration:<br>';
-    print htmlspecialchars(XML_Util::getXMLDeclaration());
+    print htmlspecialchars($util->getXMLDeclaration());
     print "\n<br><br>\n";
 
     print 'building XML declaration with additional attributes:<br>';
-    print htmlspecialchars(XML_Util::getXMLDeclaration('1.0', 'UTF-8', true));
+    print htmlspecialchars($util->getXMLDeclaration('1.0', 'UTF-8', true));
     print "\n<br><br>\n";
 
     /**
      * building document type declaration
      */
     print 'building DocType declaration:<br>';
-    print htmlspecialchars(XML_Util::getDocTypeDeclaration('package', 
+    print htmlspecialchars($util->getDocTypeDeclaration('package', 
         'http://pear.php.net/dtd/package-1.0'));
     print "\n<br><br>\n";
 
     print 'building DocType declaration with public ID (does not exist):<br>';
-    print htmlspecialchars(XML_Util::getDocTypeDeclaration('package', 
+    print htmlspecialchars($util->getDocTypeDeclaration('package', 
         array('uri' => 'http://pear.php.net/dtd/package-1.0', 
             'id' => '-//PHP//PEAR/DTD PACKAGE 0.1')));
     print "\n<br><br>\n";
 
     print 'building DocType declaration with internal DTD:<br>';
     print '<pre>';
-    print htmlspecialchars(XML_Util::getDocTypeDeclaration('package', 
+    print htmlspecialchars($util->getDocTypeDeclaration('package', 
         'http://pear.php.net/dtd/package-1.0', 
         '<!ELEMENT additionalInfo (#PCDATA)>'));
     print '</pre>';
@@ -111,7 +113,7 @@
     );
 
     print 'converting array to string:<br>';
-    print XML_Util::attributesToString($att);
+    print $util->attributesToString($att);
     print "\n<br><br>\n";
 
 
@@ -125,7 +127,7 @@
 
     print 'converting array to string (including line breaks):<br>';
     print '<pre>';
-    print XML_Util::attributesToString($att, true, true);
+    print $util->attributesToString($att, true, true);
     print '</pre>';
     print "\n<br><br>\n";
 
@@ -135,7 +137,7 @@
      */
     print 'splitting qualified tag name:<br>';
     print '<pre>';
-    print_r(XML_Util::splitQualifiedName('xslt:stylesheet'));
+    print_r($util->splitQualifiedName('xslt:stylesheet'));
     print '</pre>';
     print "\n<br>\n";
 
@@ -145,7 +147,7 @@
      */
     print 'splitting qualified tag name (no namespace):<br>';
     print '<pre>';
-    print_r(XML_Util::splitQualifiedName('foo'));
+    print_r($util->splitQualifiedName('foo'));
     print '</pre>';
     print "\n<br>\n";
 
@@ -155,7 +157,7 @@
     print 'splitting qualified tag name '
         . '(no namespace, but default namespace specified):<br>';
     print '<pre>';
-    print_r(XML_Util::splitQualifiedName('foo', 'bar'));
+    print_r($util->splitQualifiedName('foo', 'bar'));
     print '</pre>';
     print "\n<br>\n";
 
@@ -164,13 +166,13 @@
      */
     print 'verifying \'My private tag\':<br>';
     print '<pre>';
-    print_r(XML_Util::isValidname('My Private Tag'));
+    print_r($util->isValidname('My Private Tag'));
     print '</pre>';
     print "\n<br><br>\n";
     
     print 'verifying \'-MyTag\':<br>';
     print '<pre>';
-    print_r(XML_Util::isValidname('-MyTag'));
+    print_r($util->isValidname('-MyTag'));
     print '</pre>';
     print "\n<br><br>\n";
 
@@ -185,7 +187,7 @@
     );
 
     print 'creating a tag with namespace and local part:<br>';
-    print htmlentities(XML_Util::createTagFromArray($tag));
+    print htmlentities($util->createTagFromArray($tag));
     print "\n<br><br>\n";
 
     /**
@@ -199,7 +201,7 @@
     );
 
     print 'creating a tag with qualified name and namespaceUri:<br>';
-    print htmlentities(XML_Util::createTagFromArray($tag));
+    print htmlentities($util->createTagFromArray($tag));
     print "\n<br><br>\n";
 
     /**
@@ -212,7 +214,7 @@
     );
 
     print 'creating an empty tag without namespace but namespace Uri:<br>';
-    print htmlentities(XML_Util::createTagFromArray($tag));
+    print htmlentities($util->createTagFromArray($tag));
     print "\n<br><br>\n";
 
     /**
@@ -230,7 +232,7 @@
     );
 
     print 'creating an XML tag with more namespaces:<br />';
-    print htmlentities(XML_Util::createTagFromArray($tag));
+    print htmlentities($util->createTagFromArray($tag));
     print "\n<br><br>\n";
 
     /**
@@ -243,7 +245,7 @@
     );
 
     print 'creating a tag with CData section:<br>';
-    print htmlentities(XML_Util::createTagFromArray($tag, XML_UTIL_CDATA_SECTION));
+    print htmlentities($util->createTagFromArray($tag, XML_UTIL_CDATA_SECTION));
     print "\n<br><br>\n";
 
     /**
@@ -258,14 +260,14 @@
     );
 
     print 'creating a tag with HTML entities:<br>';
-    print htmlentities(XML_Util::createTagFromArray($tag, XML_UTIL_ENTITIES_HTML));
+    print htmlentities($util->createTagFromArray($tag, XML_UTIL_ENTITIES_HTML));
     print "\n<br><br>\n";
 
     /**
     * creating an XML tag with createTag
     */
     print 'creating a tag with createTag:<br>';
-    print htmlentities(XML_Util::createTag('myNs:myTag', 
+    print htmlentities($util->createTag('myNs:myTag', 
         array('foo' => 'bar'), 
         'This is inside the tag', 
         'http://www.w3c.org/myNs#'));
@@ -281,7 +283,7 @@
     );
     print 'trying to create an XML tag with an array as content:<br>';
     print '<pre>';
-    print_r(XML_Util::createTagFromArray($tag));
+    print_r($util->createTagFromArray($tag));
     print '</pre>';
     print "\n<br><br>\n";
     
@@ -293,7 +295,7 @@
     );
     print 'trying to create an XML tag without a name:<br>';
     print '<pre>';
-    print_r(XML_Util::createTagFromArray($tag));
+    print_r($util->createTagFromArray($tag));
     print '</pre>';
     print "\n<br><br>\n";
 ?>

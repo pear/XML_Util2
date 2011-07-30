@@ -1,15 +1,16 @@
 --TEST--
-XML_Util::isValidName() basic tests
+XML_Util2::isValidName() basic tests
 --CREDITS--
 Chuck Burgess <ashnazg@php.net>
 # created for v1.2.0a1 2008-05-04
 --FILE--
 <?php
-require_once 'XML' . DIRECTORY_SEPARATOR . 'Util.php';
-echo '=====XML_Util::isValidName() basic tests=====' . PHP_EOL . PHP_EOL;
+require_once 'XML' . DIRECTORY_SEPARATOR . 'Util2.php';
+$util = new XML_Util2();
+echo '=====XML_Util2::isValidName() basic tests=====' . PHP_EOL . PHP_EOL;
 
 echo "TEST:  valid tag" . PHP_EOL;
-$result = XML_Util::isValidName("alpha-x_y_z.123");
+$result = $util->isValidName("alpha-x_y_z.123");
 if (is_a($result, 'PEAR_Error')) {
     print "Invalid XML name: " . $result->getMessage() . PHP_EOL . PHP_EOL;
 } else {
@@ -17,7 +18,7 @@ if (is_a($result, 'PEAR_Error')) {
 }
 
 echo "TEST:  invalid tag" . PHP_EOL;
-$result = XML_Util::isValidName("invalidTag?");
+$result = $util->isValidName("invalidTag?");
 if (is_a($result, 'PEAR_Error')) {
     print "Invalid XML name: " . $result->getMessage() . PHP_EOL . PHP_EOL;
 } else {
@@ -25,7 +26,7 @@ if (is_a($result, 'PEAR_Error')) {
 }
 
 echo "TEST:  invalid tag that doesn't start with a letter" . PHP_EOL;
-$result = XML_Util::isValidName("1234five");
+$result = $util->isValidName("1234five");
 if (is_a($result, 'PEAR_Error')) {
     print "Invalid XML name: " . $result->getMessage() . PHP_EOL . PHP_EOL;
 } else {
@@ -34,7 +35,7 @@ if (is_a($result, 'PEAR_Error')) {
 
 ?>
 --EXPECT--
-=====XML_Util::isValidName() basic tests=====
+=====XML_Util2::isValidName() basic tests=====
 
 TEST:  valid tag
 Valid XML name.

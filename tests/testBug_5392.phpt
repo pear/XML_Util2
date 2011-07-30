@@ -5,15 +5,16 @@ Chuck Burgess <ashnazg@php.net>
 # created for v1.2.0a1 2008-05-04
 --FILE--
 <?php
-require_once 'XML' . DIRECTORY_SEPARATOR . 'Util.php';
-echo '=====XML_Util tests for Bug #5392 "encoding of ISO-8859-1 is the only supported encoding"=====' . PHP_EOL . PHP_EOL;
+require_once 'XML' . DIRECTORY_SEPARATOR . 'Util2.php';
+$util = new XML_Util2();
+echo '=====XML_Util2 tests for Bug #5392 "encoding of ISO-8859-1 is the only supported encoding"=====' . PHP_EOL . PHP_EOL;
 
 echo "TEST:  test case provided in bug report" . PHP_EOL;
 $data = 'This data contains special chars like <, >, & and " as well as ä, ö, ß, à and ê';
 
-$replaced = XML_Util::replaceEntities($data, XML_UTIL_ENTITIES_HTML, 'UTF-8');
+$replaced = $util->replaceEntities($data,  XML_UTIL2_ENTITIES_HTML, 'UTF-8');
 
-$reversed = XML_Util::reverseEntities($replaced, XML_UTIL_ENTITIES_HTML, 'UTF-8');
+$reversed = $util->reverseEntities($replaced,  XML_UTIL2_ENTITIES_HTML, 'UTF-8');
 
 echo $replaced . PHP_EOL;
 echo $reversed . PHP_EOL;

@@ -5,9 +5,9 @@
 /**
  * Examples (file #2)
  *
- * several examples for the methods of XML_Util
+ * several examples for the methods of XML_Util2
  * 
- * PHP versions 4 and 5
+ * PHP version 5
  *
  * LICENSE:
  *
@@ -39,13 +39,13 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  * @category   XML
- * @package    XML_Util
+ * @package    XML_Util2
  * @subpackage Examples
  * @author     Stephan Schmidt <schst@php.net>
  * @copyright  2003-2008 Stephan Schmidt <schst@php.net>
  * @license    http://opensource.org/licenses/bsd-license New BSD License
  * @version    CVS: $Id$
- * @link       http://pear.php.net/package/XML_Util
+ * @link       http://pear.php.net/package/XML_Util2
  */
 
     /**
@@ -53,13 +53,15 @@
      */
     error_reporting(E_ALL);
 
-    require_once 'XML/Util.php';
+    require_once 'XML/Util2.php';
+
+    $util = new XML_Util2();
 
     /**
      * creating a start element
      */
     print 'creating a start element:<br>';
-    print htmlentities(XML_Util::createStartElement('myNs:myTag', 
+    print htmlentities($util->createStartElement('myNs:myTag', 
         array('foo' => 'bar'), 'http://www.w3c.org/myNs#'));
     print "\n<br><br>\n";
 
@@ -68,7 +70,7 @@
      * creating a start element
      */
     print 'creating a start element:<br>';
-    print htmlentities(XML_Util::createStartElement('myTag', 
+    print htmlentities($util->createStartElement('myTag', 
         array(), 'http://www.w3c.org/myNs#'));
     print "\n<br><br>\n";
 
@@ -77,7 +79,7 @@
      */
     print 'creating a start element:<br>';
     print '<pre>';
-    print htmlentities(XML_Util::createStartElement('myTag', 
+    print htmlentities($util->createStartElement('myTag', 
         array('foo' => 'bar', 'argh' => 'tomato'), 
         'http://www.w3c.org/myNs#', true));
     print '</pre>';
@@ -88,21 +90,21 @@
      * creating an end element
      */
     print 'creating an end element:<br>';
-    print htmlentities(XML_Util::createEndElement('myNs:myTag'));
+    print htmlentities($util->createEndElement('myNs:myTag'));
     print "\n<br><br>\n";
 
     /**
      * creating a CData section
      */
     print 'creating a CData section:<br>';
-    print htmlentities(XML_Util::createCDataSection('I am content.'));
+    print htmlentities($util->createCDataSection('I am content.'));
     print "\n<br><br>\n";
 
     /**
      * creating a comment
      */
     print 'creating a comment:<br>';
-    print htmlentities(XML_Util::createComment('I am a comment.'));
+    print htmlentities($util->createComment('I am a comment.'));
     print "\n<br><br>\n";
 
     /**
@@ -117,8 +119,8 @@
 
     print 'creating a tag with qualified name and namespaceUri:<br>';
     print '<pre>';
-    print htmlentities(XML_Util::createTagFromArray($tag, 
-        XML_UTIL_REPLACE_ENTITIES, true));
+    print htmlentities($util->createTagFromArray($tag, 
+        XML_UTIL2_REPLACE_ENTITIES, true));
     print '</pre>';
     print "\n<br><br>\n";
 
@@ -128,8 +130,8 @@
     $atts = array('series' => 'Starsky &amp; Hutch', 'channel' => 'ABC');
     print 'creating a attribute string, '
         . 'entities in values already had been replaced:<br>';
-    print htmlentities(XML_Util::attributesToString($atts, 
-        true, false, false, false, XML_UTIL_ENTITIES_NONE));
+    print htmlentities($util->attributesToString($atts, 
+        true, false, false, false, XML_UTIL2_ENTITIES_NONE));
     print "\n<br><br>\n";
 
     /**
@@ -137,8 +139,8 @@
      */
     $atts = array('series' => 'Starsky &amp; Hutch', 'channel' => 'ABC');
     print 'using the array-syntax for attributesToString()<br>';
-    print htmlentities(XML_Util::attributesToString($atts, 
-        array('entities' => XML_UTIL_ENTITIES_NONE)));
+    print htmlentities($util->attributesToString($atts, 
+        array('entities' => XML_UTIL2_ENTITIES_NONE)));
     print "\n<br><br>\n";
 
 

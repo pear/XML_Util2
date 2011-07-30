@@ -1,12 +1,13 @@
 --TEST--
-XML_Util::createTagFromArray() basic tests
+XML_Util2::createTagFromArray() basic tests
 --CREDITS--
 Chuck Burgess <ashnazg@php.net>
 # created for v1.2.0a1 2008-05-04
 --FILE--
 <?php
-require_once 'XML' . DIRECTORY_SEPARATOR . 'Util.php';
-echo '=====XML_Util::createTagFromArray() basic tests=====' . PHP_EOL . PHP_EOL;
+require_once 'XML' . DIRECTORY_SEPARATOR . 'Util2.php';
+$util = new XML_Util2();
+echo '=====XML_Util2::createTagFromArray() basic tests=====' . PHP_EOL . PHP_EOL;
 
 $bad = array(
     "foo" => "bar",
@@ -70,70 +71,70 @@ $tag12 = array(
 );
 
 echo "TEST:  basic usage with an invalid array" . PHP_EOL;
-echo XML_Util::createTagFromArray($bad) . PHP_EOL . PHP_EOL;
+echo $util->createTagFromArray($bad) . PHP_EOL . PHP_EOL;
 
 echo "TEST:  basic usage with a valid array (qname only)" . PHP_EOL;
-echo XML_Util::createTagFromArray($tag1) . PHP_EOL . PHP_EOL;
+echo $util->createTagFromArray($tag1) . PHP_EOL . PHP_EOL;
 
 echo "TEST:  basic usage with a valid array (qname and namespaceUri)" . PHP_EOL;
-echo XML_Util::createTagFromArray($tag2) . PHP_EOL . PHP_EOL;
+echo $util->createTagFromArray($tag2) . PHP_EOL . PHP_EOL;
 
 echo "TEST:  basic usage with a valid array (qname, namespaceUri, and attributes)" . PHP_EOL;
-echo XML_Util::createTagFromArray($tag3) . PHP_EOL . PHP_EOL;
+echo $util->createTagFromArray($tag3) . PHP_EOL . PHP_EOL;
 
 echo "TEST:  basic usage with a valid array (qname, namespaceUri, attributes, and content)" . PHP_EOL;
-echo XML_Util::createTagFromArray($tag4) . PHP_EOL . PHP_EOL;
+echo $util->createTagFromArray($tag4) . PHP_EOL . PHP_EOL;
 
 echo "TEST:  basic usage with a valid array (qname, attributes, and content)" . PHP_EOL;
-echo XML_Util::createTagFromArray($tag5) . PHP_EOL . PHP_EOL;
+echo $util->createTagFromArray($tag5) . PHP_EOL . PHP_EOL;
 
 echo "TEST:  basic usage with a valid array (qname, namespaceUri, and content)" . PHP_EOL;
-echo XML_Util::createTagFromArray($tag6) . PHP_EOL . PHP_EOL;
+echo $util->createTagFromArray($tag6) . PHP_EOL . PHP_EOL;
 
 echo "TEST:  basic usage with a valid array (namespaceUri, attributes, and content)" . PHP_EOL;
-echo XML_Util::createTagFromArray($tag7) . PHP_EOL . PHP_EOL;
+echo $util->createTagFromArray($tag7) . PHP_EOL . PHP_EOL;
 
 echo "TEST:  basic usage with a valid array (qname, namespaceUri, attributes, and content), plus REPLACE_ENTITIES" . PHP_EOL;
-echo XML_Util::createTagFromArray($tag4, XML_UTIL_REPLACE_ENTITIES) . PHP_EOL . PHP_EOL;
+echo $util->createTagFromArray($tag4,  XML_UTIL2_REPLACE_ENTITIES) . PHP_EOL . PHP_EOL;
 
 echo "TEST:  basic usage with a valid array (qname, namespaceUri, attributes, and content), plus ENTITIES_NONE" . PHP_EOL;
-echo XML_Util::createTagFromArray($tag4, XML_UTIL_ENTITIES_NONE) . PHP_EOL . PHP_EOL;
+echo $util->createTagFromArray($tag4,  XML_UTIL2_ENTITIES_NONE) . PHP_EOL . PHP_EOL;
 
 echo "TEST:  basic usage with a valid array (qname, namespaceUri, attributes, and content), REPLACE_ENTITIES, and multiline = false" . PHP_EOL;
-echo XML_Util::createTagFromArray($tag4, XML_UTIL_REPLACE_ENTITIES, false) . PHP_EOL . PHP_EOL;
+echo $util->createTagFromArray($tag4,  XML_UTIL2_REPLACE_ENTITIES, false) . PHP_EOL . PHP_EOL;
 
 echo "TEST:  basic usage with a valid array (qname, namespaceUri, attributes, and content), REPLACE_ENTITIES, and multiline = true" . PHP_EOL;
-echo XML_Util::createTagFromArray($tag4, XML_UTIL_REPLACE_ENTITIES, true) . PHP_EOL . PHP_EOL;
+echo $util->createTagFromArray($tag4,  XML_UTIL2_REPLACE_ENTITIES, true) . PHP_EOL . PHP_EOL;
 
 echo "TEST:  basic usage with a valid array (qname, namespaceUri, attributes, and content), REPLACE_ENTITIES, multiline = true, and indent = (2 spaces)" . PHP_EOL;
-echo XML_Util::createTagFromArray($tag4, XML_UTIL_REPLACE_ENTITIES, true, '  ') . PHP_EOL . PHP_EOL;
+echo $util->createTagFromArray($tag4,  XML_UTIL2_REPLACE_ENTITIES, true, '  ') . PHP_EOL . PHP_EOL;
 
 echo "TEST:  basic usage with a valid array (qname, namespaceUri, attributes, and content), REPLACE_ENTITIES, multiline = true, indent = (2 spaces), and linebreak = '^'" . PHP_EOL;
-echo XML_Util::createTagFromArray($tag4, XML_UTIL_REPLACE_ENTITIES, true, '  ', '^') . PHP_EOL . PHP_EOL;
+echo $util->createTagFromArray($tag4,  XML_UTIL2_REPLACE_ENTITIES, true, '  ', '^') . PHP_EOL . PHP_EOL;
 
 echo "TEST:  basic usage with a valid array (qname, namespaceUri, attributes, and content), REPLACE_ENTITIES, multiline = true, indent = (2 spaces), linebreak = '^', and sortAttributes = true" . PHP_EOL;
-echo XML_Util::createTagFromArray($tag4, XML_UTIL_REPLACE_ENTITIES, true, '  ', '^', true) . PHP_EOL . PHP_EOL;
+echo $util->createTagFromArray($tag4,  XML_UTIL2_REPLACE_ENTITIES, true, '  ', '^', true) . PHP_EOL . PHP_EOL;
 
 echo "TEST:  basic usage with a valid array (qname, namespaceUri, attributes, and content), REPLACE_ENTITIES, multiline = true, indent = (2 spaces), linebreak = '^', and sortAttributes = false" . PHP_EOL;
-echo XML_Util::createTagFromArray($tag4, XML_UTIL_REPLACE_ENTITIES, true, '  ', '^', false) . PHP_EOL . PHP_EOL;
+echo $util->createTagFromArray($tag4,  XML_UTIL2_REPLACE_ENTITIES, true, '  ', '^', false) . PHP_EOL . PHP_EOL;
 
 echo 'TEST:  cause a non-scalar error on the content tag' . PHP_EOL;
-echo XML_Util::createTagFromArray($tag8) . PHP_EOL . PHP_EOL;
+echo $util->createTagFromArray($tag8) . PHP_EOL . PHP_EOL;
 
 echo 'TEST:  handle an array of namespaces being passed' . PHP_EOL;
-echo XML_Util::createTagFromArray($tag9) . PHP_EOL . PHP_EOL;
+echo $util->createTagFromArray($tag9) . PHP_EOL . PHP_EOL;
 
 echo 'TEST:  qname is derived from namespace + localPart' . PHP_EOL;
-echo XML_Util::createTagFromArray($tag10) . PHP_EOL . PHP_EOL;
+echo $util->createTagFromArray($tag10) . PHP_EOL . PHP_EOL;
 
 echo 'TEST:  qname is derived from localPart only' . PHP_EOL;
-echo XML_Util::createTagFromArray($tag11) . PHP_EOL . PHP_EOL;
+echo $util->createTagFromArray($tag11) . PHP_EOL . PHP_EOL;
 
 echo 'TEST:  namespaceUri is given, but namespace is not' . PHP_EOL;
-echo XML_Util::createTagFromArray($tag12) . PHP_EOL . PHP_EOL;
+echo $util->createTagFromArray($tag12) . PHP_EOL . PHP_EOL;
 ?>
 --EXPECT--
-=====XML_Util::createTagFromArray() basic tests=====
+=====XML_Util2::createTagFromArray() basic tests=====
 
 TEST:  basic usage with an invalid array
 You must either supply a qualified name (qname) or local tag name (localPart).

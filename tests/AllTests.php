@@ -11,12 +11,12 @@
  * PHP version 5
  *
  * @category   XML
- * @package    XML_Util
+ * @package    XML_Util2
  * @subpackage UnitTesting
  * @author     Chuck Burgess <ashnazg@php.net>
  * @license    http://www.opensource.org/licenses/bsd-license.php New BSD License
  * @version    CVS: $Id$
- * @link       http://pear.php.net/package/XML_Util
+ * @link       http://pear.php.net/package/XML_Util2
  * @since      1.2.0a1
  */
 
@@ -39,7 +39,7 @@ if (version_compare(PHP_VERSION, "5.1.4") < 0) {
  *           to make this usage meet the PEAR CS... we cannot rename it here.
  */
 if (!defined('PHPUnit_MAIN_METHOD')) {
-    define('PHPUnit_MAIN_METHOD', 'XML_Util_AllTests::main');
+    define('PHPUnit_MAIN_METHOD', 'XML_Util2_AllTests::main');
 }
 
 
@@ -58,7 +58,7 @@ require_once 'PHPUnit/Extensions/PhptTestSuite.php';
 /**
  * directory where PHPT tests are located
  */
-define('XML_UTIL_DIR_PHPT', dirname(__FILE__));
+define('XML_UTIL2_DIR_PHPT', dirname(__FILE__));
 
 /**
  * Master Unit Test Suite class for XML_Util
@@ -69,15 +69,15 @@ define('XML_UTIL_DIR_PHPT', dirname(__FILE__));
  * by PhpUnit or via "pear run-tests -up xml_util". 
  *
  * @category   XML
- * @package    XML_Util
+ * @package    XML_Util2
  * @subpackage UnitTesting
  * @author     Chuck Burgess <ashnazg@php.net>
  * @license    http://www.opensource.org/licenses/bsd-license.php New BSD License
  * @version    Release: @package_version@
- * @link       http://pear.php.net/package/XML_Util
+ * @link       http://pear.php.net/package/XML_Util2
  * @since      1.2.0a1
  */
-class XML_Util_AllTests
+class XML_Util2_AllTests
 {
 
     /**
@@ -112,7 +112,7 @@ class XML_Util_AllTests
         /*
          * add PHPT tests
          */
-        $phpt = new PHPUnit_Extensions_PhptTestSuite(XML_UTIL_DIR_PHPT);
+        $phpt = new PHPUnit_Extensions_PhptTestSuite(XML_UTIL2_DIR_PHPT);
         $suite->addTestSuite($phpt);
 
         return $suite;
@@ -125,7 +125,7 @@ class XML_Util_AllTests
  *           to make this usage meet the PEAR CS... we cannot rename it here.
  */
 if (PHPUnit_MAIN_METHOD == 'XML_Util_AllTests::main') {
-    XML_Util_AllTests::main();
+    XML_Util2_AllTests::main();
 }
 
 /* vim: set expandtab tabstop=4 shiftwidth=4 softtabstop=4: */

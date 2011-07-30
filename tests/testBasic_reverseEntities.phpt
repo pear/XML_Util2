@@ -1,51 +1,52 @@
 --TEST--
-XML_Util::reverseEntities() basic tests
+XML_Util2::reverseEntities() basic tests
 --CREDITS--
 Chuck Burgess <ashnazg@php.net>
 # created for v1.2.0a1 2008-05-04
 --FILE--
 <?php
-require_once 'XML' . DIRECTORY_SEPARATOR . 'Util.php';
-echo '=====XML_Util::reverseEntities() basic tests=====' . PHP_EOL . PHP_EOL;
+require_once 'XML' . DIRECTORY_SEPARATOR . 'Util2.php';
+$util = new XML_Util2();
+echo '=====XML_Util2::reverseEntities() basic tests=====' . PHP_EOL . PHP_EOL;
 
 $data = 'This string contains &lt; &amp; &gt;.';
 $utf8 = 'This data contains special chars like &lt;, &gt;, &amp; and &quot; as well as &auml;, &ouml;, &szlig;, &agrave; and &ecirc;';
 
 echo "TEST:  basic usage" . PHP_EOL;
-echo XML_Util::reverseEntities($data) . PHP_EOL . PHP_EOL;
+echo $util->reverseEntities($data) . PHP_EOL . PHP_EOL;
 
 echo "TEST:  basic usage but with bogus \$replaceEntities arg" . PHP_EOL;
-echo XML_Util::reverseEntities($data, 'I_AM_BOGUS') . PHP_EOL . PHP_EOL;
+echo $util->reverseEntities($data, 'I_AM_BOGUS') . PHP_EOL . PHP_EOL;
 
 echo "TEST:  basic usage with ENTITIES_XML" . PHP_EOL;
-echo XML_Util::reverseEntities($data, XML_UTIL_ENTITIES_XML) . PHP_EOL . PHP_EOL;
+echo $util->reverseEntities($data,  XML_UTIL2_ENTITIES_XML) . PHP_EOL . PHP_EOL;
 
 echo "TEST:  basic usage with ENTITIES_XML and UTF-8" . PHP_EOL;
-echo XML_Util::reverseEntities($data, XML_UTIL_ENTITIES_XML, 'UTF-8') . PHP_EOL . PHP_EOL;
+echo $util->reverseEntities($data,  XML_UTIL2_ENTITIES_XML, 'UTF-8') . PHP_EOL . PHP_EOL;
 
 echo "TEST:  utf8 usage with ENTITIES_XML and UTF-8" . PHP_EOL;
-echo XML_Util::reverseEntities($utf8, XML_UTIL_ENTITIES_XML, 'UTF-8') . PHP_EOL . PHP_EOL;
+echo $util->reverseEntities($utf8,  XML_UTIL2_ENTITIES_XML, 'UTF-8') . PHP_EOL . PHP_EOL;
 
 echo "TEST:  basic usage with ENTITIES_XML_REQUIRED" . PHP_EOL;
-echo XML_Util::reverseEntities($data, XML_UTIL_ENTITIES_XML_REQUIRED) . PHP_EOL . PHP_EOL;
+echo $util->reverseEntities($data,  XML_UTIL2_ENTITIES_XML_REQUIRED) . PHP_EOL . PHP_EOL;
 
 echo "TEST:  basic usage with ENTITIES_XML_REQUIRED and UTF-8" . PHP_EOL;
-echo XML_Util::reverseEntities($data, XML_UTIL_ENTITIES_XML_REQUIRED, 'UTF-8') . PHP_EOL . PHP_EOL;
+echo $util->reverseEntities($data,  XML_UTIL2_ENTITIES_XML_REQUIRED, 'UTF-8') . PHP_EOL . PHP_EOL;
 
 echo "TEST:  utf8 usage with ENTITIES_XML_REQUIRED and UTF-8" . PHP_EOL;
-echo XML_Util::reverseEntities($utf8, XML_UTIL_ENTITIES_XML_REQUIRED, 'UTF-8') . PHP_EOL . PHP_EOL;
+echo $util->reverseEntities($utf8,  XML_UTIL2_ENTITIES_XML_REQUIRED, 'UTF-8') . PHP_EOL . PHP_EOL;
 
 echo "TEST:  basic usage with ENTITIES_HTML" . PHP_EOL;
-echo XML_Util::reverseEntities($data, XML_UTIL_ENTITIES_HTML) . PHP_EOL . PHP_EOL;
+echo $util->reverseEntities($data,  XML_UTIL2_ENTITIES_HTML) . PHP_EOL . PHP_EOL;
 
 echo "TEST:  basic usage with ENTITIES_HTML and UTF-8" . PHP_EOL;
-echo XML_Util::reverseEntities($data, XML_UTIL_ENTITIES_HTML, 'UTF-8') . PHP_EOL . PHP_EOL;
+echo $util->reverseEntities($data,  XML_UTIL2_ENTITIES_HTML, 'UTF-8') . PHP_EOL . PHP_EOL;
 
 echo "TEST:  utf8 usage with ENTITIES_HTML and UTF-8" . PHP_EOL;
-echo XML_Util::reverseEntities($utf8, XML_UTIL_ENTITIES_HTML, 'UTF-8') . PHP_EOL . PHP_EOL;
+echo $util->reverseEntities($utf8,  XML_UTIL2_ENTITIES_HTML, 'UTF-8') . PHP_EOL . PHP_EOL;
 ?>
 --EXPECT--
-=====XML_Util::reverseEntities() basic tests=====
+=====XML_Util2::reverseEntities() basic tests=====
 
 TEST:  basic usage
 This string contains < & >.

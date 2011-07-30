@@ -9,21 +9,24 @@ $desc =
     . "creation of tags, validation of XML names and more."
 ;
 
-$version = '1.2.1';
-$apiver  = '1.2.0';
-$state   = 'stable';
+$version = '2.0.0alpha1';
+$apiver  = '2.0.0';
+$state   = 'alpha';
 
 $notes = <<<EOT
-Fixed Bug #14760: Bug in getDocTypeDeclaration() [ashnazg|fpospisil]
+Initial release
+Forked from XML_Util
+Fixed dir layout
+PHP5 E_STRICT compatability
 EOT;
 
 $package = PEAR_PackageFileManager2::importOptions(
     'package.xml',
     array(
-    'filelistgenerator' => 'cvs',
+    'filelistgenerator' => 'svn',
     'changelogoldtonew' => false,
     'simpleoutput'	=> true,
-    'baseinstalldir'    => 'XML',
+    'baseinstalldir'    => '/',
     'packagefile'       => 'package.xml',
     'packagedirectory'  => '.'));
 
@@ -34,7 +37,7 @@ if (PEAR::isError($result)) {
 
 $package->clearDeps();
 
-$package->setPackage('XML_Util');
+$package->setPackage('XML_Util2');
 $package->setPackageType('php');
 $package->setSummary('XML utility class');
 $package->setDescription($desc);
@@ -45,11 +48,11 @@ $package->setAPIStability($state);
 $package->setReleaseVersion($version);
 $package->setReleaseStability($state);
 $package->setNotes($notes);
-$package->setPhpDep('4.3.0');
-$package->setPearinstallerDep('1.4.3');
+$package->setPhpDep('5.1.0');
+$package->setPearinstallerDep('1.9.3');
 $package->addExtensionDep('required', 'pcre');
 $package->addIgnore(array('package.php', 'package.xml'));
-$package->addReplacement('Util.php', 'package-info', '@version@', 'version');
+$package->addReplacement('Util2.php', 'package-info', '@version@', 'version');
 $package->generateContents();
 
 if ($_SERVER['argv'][1] == 'make') {

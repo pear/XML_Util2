@@ -3,11 +3,11 @@
 /* vim: set expandtab tabstop=4 shiftwidth=4 softtabstop=4: */
 
 /**
- * XML_Util
+ * XML_Util2
  *
  * XML Utilities package
  *
- * PHP versions 4 and 5
+ * PHP version 5
  *
  * LICENSE:
  *
@@ -39,101 +39,100 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  * @category  XML
- * @package   XML_Util
+ * @package   XML_Util2
  * @author    Stephan Schmidt <schst@php.net>
  * @copyright 2003-2008 Stephan Schmidt <schst@php.net>
  * @license   http://opensource.org/licenses/bsd-license New BSD License
  * @version   CVS: $Id$
- * @link      http://pear.php.net/package/XML_Util
+ * @link      http://pear.php.net/package/XML_Util2
  */
 
 /**
  * error code for invalid chars in XML name
  */
-define('XML_UTIL_ERROR_INVALID_CHARS', 51);
+define('XML_UTIL2_ERROR_INVALID_CHARS', 51);
 
 /**
  * error code for invalid chars in XML name
  */
-define('XML_UTIL_ERROR_INVALID_START', 52);
+define('XML_UTIL2_ERROR_INVALID_START', 52);
 
 /**
  * error code for non-scalar tag content
  */
-define('XML_UTIL_ERROR_NON_SCALAR_CONTENT', 60);
+define('XML_UTIL2_ERROR_NON_SCALAR_CONTENT', 60);
 
 /**
  * error code for missing tag name
  */
-define('XML_UTIL_ERROR_NO_TAG_NAME', 61);
+define('XML_UTIL2_ERROR_NO_TAG_NAME', 61);
 
 /**
  * replace XML entities
  */
-define('XML_UTIL_REPLACE_ENTITIES', 1);
+define('XML_UTIL2_REPLACE_ENTITIES', 1);
 
 /**
  * embedd content in a CData Section
  */
-define('XML_UTIL_CDATA_SECTION', 5);
+define('XML_UTIL2_CDATA_SECTION', 5);
 
 /**
  * do not replace entitites
  */
-define('XML_UTIL_ENTITIES_NONE', 0);
+define('XML_UTIL2_ENTITIES_NONE', 0);
 
 /**
  * replace all XML entitites
  * This setting will replace <, >, ", ' and &
  */
-define('XML_UTIL_ENTITIES_XML', 1);
+define('XML_UTIL2_ENTITIES_XML', 1);
 
 /**
  * replace only required XML entitites
  * This setting will replace <, " and &
  */
-define('XML_UTIL_ENTITIES_XML_REQUIRED', 2);
+define('XML_UTIL2_ENTITIES_XML_REQUIRED', 2);
 
 /**
  * replace HTML entitites
  * @link http://www.php.net/htmlentities
  */
-define('XML_UTIL_ENTITIES_HTML', 3);
+define('XML_UTIL2_ENTITIES_HTML', 3);
 
 /**
  * Collapse all empty tags.
  */
-define('XML_UTIL_COLLAPSE_ALL', 1);
+define('XML_UTIL2_COLLAPSE_ALL', 1);
 
 /**
  * Collapse only empty XHTML tags that have no end tag.
  */
-define('XML_UTIL_COLLAPSE_XHTML_ONLY', 2);
+define('XML_UTIL2_COLLAPSE_XHTML_ONLY', 2);
 
 /**
  * utility class for working with XML documents
  *
 
  * @category  XML
- * @package   XML_Util
+ * @package   XML_Util2
  * @author    Stephan Schmidt <schst@php.net>
  * @copyright 2003-2008 Stephan Schmidt <schst@php.net>
  * @license   http://opensource.org/licenses/bsd-license New BSD License
  * @version   Release: @version@
- * @link      http://pear.php.net/package/XML_Util
+ * @link      http://pear.php.net/package/XML_Util2
  */
-class XML_Util
+class XML_Util2
 {
     /**
      * return API version
      *
      * @return string $version API version
      * @access public
-     * @static
      */
-    function apiVersion()
+    public function apiVersion()
     {
-        return '1.1';
+        return '2.0';
     }
 
     /**
@@ -143,20 +142,24 @@ class XML_Util
      * entities should be replaced.
      *
      * <code>
-     * require_once 'XML/Util.php';
+     * require_once 'XML/Util2.php';
+     *
+     * $util = new XML_Util2();
      *
      * // replace XML entites:
-     * $string = XML_Util::replaceEntities('This string contains < & >.');
+     * $string = $util->replaceEntities('This string contains < & >.');
      * </code>
      *
      * With the optional third parameter, you may pass the character encoding
      * <code>
-     * require_once 'XML/Util.php';
+     * require_once 'XML/Util2.php';
+     *
+     * $util = new XML_Util2();
      *
      * // replace XML entites in UTF-8:
-     * $string = XML_Util::replaceEntities(
+     * $string = $util->replaceEntities(
      *     'This string contains < & > as well as ä, ö, ß, à and ê',
-     *     XML_UTIL_ENTITIES_HTML,
+     *     XML_UTIL2_ENTITIES_HTML,
      *     'UTF-8'
      * );
      * </code>
@@ -164,23 +167,22 @@ class XML_Util
      * @param string $string          string where XML special chars
      *                                should be replaced
      * @param int    $replaceEntities setting for entities in attribute values
-     *                                (one of XML_UTIL_ENTITIES_XML,
-     *                                XML_UTIL_ENTITIES_XML_REQUIRED,
-     *                                XML_UTIL_ENTITIES_HTML)
+     *                                (one of XML_UTIL2_ENTITIES_XML,
+     *                                XML_UTIL2_ENTITIES_XML_REQUIRED,
+     *                                XML_UTIL2_ENTITIES_HTML)
      * @param string $encoding        encoding value (if any)...
      *                                must be a valid encoding as determined
      *                                by the htmlentities() function
      *
      * @return string string with replaced chars
      * @access public
-     * @static
      * @see reverseEntities()
      */
-    function replaceEntities($string, $replaceEntities = XML_UTIL_ENTITIES_XML,
+    public function replaceEntities($string, $replaceEntities = XML_UTIL2_ENTITIES_XML,
         $encoding = 'ISO-8859-1')
     {
         switch ($replaceEntities) {
-        case XML_UTIL_ENTITIES_XML:
+        case XML_UTIL2_ENTITIES_XML:
             return strtr($string, array(
                 '&'  => '&amp;',
                 '>'  => '&gt;',
@@ -188,13 +190,13 @@ class XML_Util
                 '"'  => '&quot;',
                 '\'' => '&apos;' ));
             break;
-        case XML_UTIL_ENTITIES_XML_REQUIRED:
+        case XML_UTIL2_ENTITIES_XML_REQUIRED:
             return strtr($string, array(
                 '&' => '&amp;',
                 '<' => '&lt;',
                 '"' => '&quot;' ));
             break;
-        case XML_UTIL_ENTITIES_HTML:
+        case XML_UTIL2_ENTITIES_HTML:
             return htmlentities($string, ENT_COMPAT, $encoding);
             break;
         }
@@ -208,21 +210,25 @@ class XML_Util
      * entities should be reversed.
      *
      * <code>
-     * require_once 'XML/Util.php';
+     * require_once 'XML/Util2.php';
+     *
+     * $util = new XML_Util2();
      *
      * // reverse XML entites:
-     * $string = XML_Util::reverseEntities('This string contains &lt; &amp; &gt;.');
+     * $string = $util->reverseEntities('This string contains &lt; &amp; &gt;.');
      * </code>
      *
      * With the optional third parameter, you may pass the character encoding
      * <code>
-     * require_once 'XML/Util.php';
+     * require_once 'XML/Util2.php';
+     *
+     * $util = new XML_Util2();
      *
      * // reverse XML entites in UTF-8:
-     * $string = XML_Util::reverseEntities(
+     * $string = $util->reverseEntities(
      *     'This string contains &lt; &amp; &gt; as well as'
      *     . ' &auml;, &ouml;, &szlig;, &agrave; and &ecirc;',
-     *     XML_UTIL_ENTITIES_HTML,
+     *     XML_UTIL2_ENTITIES_HTML,
      *     'UTF-8'
      * );
      * </code>
@@ -230,23 +236,22 @@ class XML_Util
      * @param string $string          string where XML special chars
      *                                should be replaced
      * @param int    $replaceEntities setting for entities in attribute values
-     *                                (one of XML_UTIL_ENTITIES_XML,
-     *                                XML_UTIL_ENTITIES_XML_REQUIRED,
-     *                                XML_UTIL_ENTITIES_HTML)
+     *                                (one of XML_UTIL2_ENTITIES_XML,
+     *                                XML_UTIL2_ENTITIES_XML_REQUIRED,
+     *                                XML_UTIL2_ENTITIES_HTML)
      * @param string $encoding        encoding value (if any)...
      *                                must be a valid encoding as determined
      *                                by the html_entity_decode() function
      *
      * @return string string with replaced chars
      * @access public
-     * @static
      * @see replaceEntities()
      */
-    function reverseEntities($string, $replaceEntities = XML_UTIL_ENTITIES_XML,
+    public function reverseEntities($string, $replaceEntities = XML_UTIL2_ENTITIES_XML,
         $encoding = 'ISO-8859-1')
     {
         switch ($replaceEntities) {
-        case XML_UTIL_ENTITIES_XML:
+        case XML_UTIL2_ENTITIES_XML:
             return strtr($string, array(
                 '&amp;'  => '&',
                 '&gt;'   => '>',
@@ -254,13 +259,13 @@ class XML_Util
                 '&quot;' => '"',
                 '&apos;' => '\'' ));
             break;
-        case XML_UTIL_ENTITIES_XML_REQUIRED:
+        case XML_UTIL2_ENTITIES_XML_REQUIRED:
             return strtr($string, array(
                 '&amp;'  => '&',
                 '&lt;'   => '<',
                 '&quot;' => '"' ));
             break;
-        case XML_UTIL_ENTITIES_HTML:
+        case XML_UTIL2_ENTITIES_HTML:
             return html_entity_decode($string, ENT_COMPAT, $encoding);
             break;
         }
@@ -271,10 +276,12 @@ class XML_Util
      * build an xml declaration
      *
      * <code>
-     * require_once 'XML/Util.php';
+     * require_once 'XML/Util2.php';
+     *
+     * $util = new XML_Util2();
      *
      * // get an XML declaration:
-     * $xmlDecl = XML_Util::getXMLDeclaration('1.0', 'UTF-8', true);
+     * $xmlDecl = $util->getXMLDeclaration('1.0', 'UTF-8', true);
      * </code>
      *
      * @param string $version    xml version
@@ -283,10 +290,9 @@ class XML_Util
      *
      * @return string xml declaration
      * @access public
-     * @static
      * @uses attributesToString() to serialize the attributes of the XML declaration
      */
-    function getXMLDeclaration($version = '1.0', $encoding = null,
+    public function getXMLDeclaration($version = '1.0', $encoding = null,
         $standalone = null)
     {
         $attributes = array(
@@ -302,17 +308,20 @@ class XML_Util
         }
 
         return sprintf('<?xml%s?>',
-            XML_Util::attributesToString($attributes, false));
+            $this->attributesToString($attributes, false));
     }
 
     /**
      * build a document type declaration
      *
      * <code>
-     * require_once 'XML/Util.php';
+     * require_once 'XML/Util2.php';
+     *
+     * $util = new XML_Util2();
      *
      * // get a doctype declaration:
-     * $xmlDecl = XML_Util::getDocTypeDeclaration('rootTag','myDocType.dtd');
+     * $util = new XML_Util2();
+     * $xmlDecl = $util->getDocTypeDeclaration('rootTag','myDocType.dtd');
      * </code>
      *
      * @param string $root        name of the root tag
@@ -322,10 +331,9 @@ class XML_Util
      *
      * @return string doctype declaration
      * @access public
-     * @static
      * @since 0.2
      */
-    function getDocTypeDeclaration($root, $uri = null, $internalDtd = null)
+    public function getDocTypeDeclaration($root, $uri = null, $internalDtd = null)
     {
         if (is_array($uri)) {
             $ref = sprintf(' PUBLIC "%s" "%s"', $uri['id'], $uri['uri']);
@@ -346,7 +354,9 @@ class XML_Util
      * create string representation of an attribute list
      *
      * <code>
-     * require_once 'XML/Util.php';
+     * require_once 'XML/Util2.php';
+     *
+     * $util = new XML_Util2();
      *
      * // build an attribute string
      * $att = array(
@@ -354,7 +364,8 @@ class XML_Util
      *              'argh'  =>  'tomato'
      *            );
      *
-     * $attList = XML_Util::attributesToString($att);
+     * $util = new XML_Util2();
+     * $attList = $util->attributesToString($att);
      * </code>
      *
      * @param array      $attributes attribute array
@@ -369,19 +380,18 @@ class XML_Util
      * @param string     $linebreak  string used for linebreaks of
      *                               multiline attributes
      * @param int        $entities   setting for entities in attribute values
-     *                               (one of XML_UTIL_ENTITIES_NONE,
-     *                               XML_UTIL_ENTITIES_XML,
-     *                               XML_UTIL_ENTITIES_XML_REQUIRED,
-     *                               XML_UTIL_ENTITIES_HTML)
+     *                               (one of XML_UTIL2_ENTITIES_NONE,
+     *                               XML_UTIL2_ENTITIES_XML,
+     *                               XML_UTIL2_ENTITIES_XML_REQUIRED,
+     *                               XML_UTIL2_ENTITIES_HTML)
      *
      * @return string string representation of the attributes
      * @access public
-     * @static
      * @uses replaceEntities() to replace XML entities in attribute values
      * @todo allow sort also to be an options array
      */
-    function attributesToString($attributes, $sort = true, $multiline = false,
-        $indent = '    ', $linebreak = "\n", $entities = XML_UTIL_ENTITIES_XML)
+    public function attributesToString($attributes, $sort = true, $multiline = false,
+        $indent = '    ', $linebreak = "\n", $entities = XML_UTIL2_ENTITIES_XML)
     {
         /*
          * second parameter may be an array
@@ -412,19 +422,19 @@ class XML_Util
             }
             if ( !$multiline || count($attributes) == 1) {
                 foreach ($attributes as $key => $value) {
-                    if ($entities != XML_UTIL_ENTITIES_NONE) {
-                        if ($entities === XML_UTIL_CDATA_SECTION) {
-                            $entities = XML_UTIL_ENTITIES_XML;
+                    if ($entities != XML_UTIL2_ENTITIES_NONE) {
+                        if ($entities === XML_UTIL2_CDATA_SECTION) {
+                            $entities = XML_UTIL2_ENTITIES_XML;
                         }
-                        $value = XML_Util::replaceEntities($value, $entities);
+                        $value = $this->replaceEntities($value, $entities);
                     }
                     $string .= ' ' . $key . '="' . $value . '"';
                 }
             } else {
                 $first = true;
                 foreach ($attributes as $key => $value) {
-                    if ($entities != XML_UTIL_ENTITIES_NONE) {
-                        $value = XML_Util::replaceEntities($value, $entities);
+                    if ($entities != XML_UTIL2_ENTITIES_NONE) {
+                        $value = $this->replaceEntities($value, $entities);
                     }
                     if ($first) {
                         $string .= ' ' . $key . '="' . $value . '"';
@@ -442,18 +452,17 @@ class XML_Util
      * Collapses empty tags.
      *
      * @param string $xml  XML
-     * @param int    $mode Whether to collapse all empty tags (XML_UTIL_COLLAPSE_ALL)
-     *                      or only XHTML (XML_UTIL_COLLAPSE_XHTML_ONLY) ones.
+     * @param int    $mode Whether to collapse all empty tags (XML_UTIL2_COLLAPSE_ALL)
+     *                      or only XHTML (XML_UTIL2_COLLAPSE_XHTML_ONLY) ones.
      *
      * @return string XML
      * @access public
-     * @static
      * @todo PEAR CS - unable to avoid "space after open parens" error
      *       in the IF branch
      */
-    function collapseEmptyTags($xml, $mode = XML_UTIL_COLLAPSE_ALL)
+    public function collapseEmptyTags($xml, $mode = XML_UTIL2_COLLAPSE_ALL)
     {
-        if ($mode == XML_UTIL_COLLAPSE_XHTML_ONLY) {
+        if ($mode == XML_UTIL2_COLLAPSE_XHTML_ONLY) {
             return preg_replace(
                 '/<(area|base(?:font)?|br|col|frame|hr|img|input|isindex|link|meta|'
                 . 'param)([^>]*)><\/\\1>/s',
@@ -467,14 +476,16 @@ class XML_Util
     /**
      * create a tag
      *
-     * This method will call XML_Util::createTagFromArray(), which
+     * This method will call XML_Util2::createTagFromArray(), which
      * is more flexible.
      *
      * <code>
-     * require_once 'XML/Util.php';
+     * require_once 'XML/Util2.php';
+     *
+     * $util = new XML_Util2();
      *
      * // create an XML tag:
-     * $tag = XML_Util::createTag('myNs:myTag',
+     * $tag = $util->createTag('myNs:myTag',
      *     array('foo' => 'bar'),
      *     'This is inside the tag',
      *     'http://www.w3c.org/myNs#');
@@ -497,12 +508,11 @@ class XML_Util
      *
      * @return string XML tag
      * @access public
-     * @static
      * @see createTagFromArray()
      * @uses createTagFromArray() to create the tag
      */
-    function createTag($qname, $attributes = array(), $content = null,
-        $namespaceUri = null, $replaceEntities = XML_UTIL_REPLACE_ENTITIES,
+    public function createTag($qname, $attributes = array(), $content = null,
+        $namespaceUri = null, $replaceEntities = XML_UTIL2_REPLACE_ENTITIES,
         $multiline = false, $indent = '_auto', $linebreak = "\n",
         $sortAttributes = true)
     {
@@ -521,7 +531,7 @@ class XML_Util
             $tag['namespaceUri'] = $namespaceUri;
         }
 
-        return XML_Util::createTagFromArray($tag, $replaceEntities, $multiline,
+        return $this->createTagFromArray($tag, $replaceEntities, $multiline,
             $indent, $linebreak, $sortAttributes);
     }
 
@@ -551,7 +561,9 @@ class XML_Util
      * </pre>
      *
      * <code>
-     * require_once 'XML/Util.php';
+     * require_once 'XML/Util2.php';
+     *
+     * $util = new XML_Util2();
      *
      * $tag = array(
      *     'qname'        => 'foo:bar',
@@ -560,7 +572,7 @@ class XML_Util
      *     'content'      => 'I\'m inside the tag',
      * );
      * // creating a tag with qualified name and namespaceUri
-     * $string = XML_Util::createTagFromArray($tag);
+     * $string = $util->createTagFromArray($tag);
      * </code>
      *
      * @param array  $tag             tag definition
@@ -577,26 +589,25 @@ class XML_Util
      *
      * @return string XML tag
      * @access public
-     * @static
      * @see createTag()
      * @uses attributesToString() to serialize the attributes of the tag
      * @uses splitQualifiedName() to get local part and namespace of a qualified name
      * @uses createCDataSection()
      * @uses raiseError()
      */
-    function createTagFromArray($tag, $replaceEntities = XML_UTIL_REPLACE_ENTITIES,
+    public function createTagFromArray($tag, $replaceEntities = XML_UTIL2_REPLACE_ENTITIES,
         $multiline = false, $indent = '_auto', $linebreak = "\n",
         $sortAttributes = true)
     {
         if (isset($tag['content']) && !is_scalar($tag['content'])) {
-            return XML_Util::raiseError('Supplied non-scalar value as tag content',
-            XML_UTIL_ERROR_NON_SCALAR_CONTENT);
+            return $this->raiseError('Supplied non-scalar value as tag content',
+            XML_UTIL2_ERROR_NON_SCALAR_CONTENT);
         }
 
         if (!isset($tag['qname']) && !isset($tag['localPart'])) {
-            return XML_Util::raiseError('You must either supply a qualified name '
+            return $this->raiseError('You must either supply a qualified name '
                 . '(qname) or local tag name (localPart).',
-                XML_UTIL_ERROR_NO_TAG_NAME);
+                XML_UTIL2_ERROR_NO_TAG_NAME);
         }
 
         // if no attributes hav been set, use empty attributes
@@ -622,7 +633,7 @@ class XML_Util
         } elseif (isset($tag['namespaceUri']) && !isset($tag['namespace'])) {
             // namespace URI is set, but no namespace
 
-            $parts = XML_Util::splitQualifiedName($tag['qname']);
+            $parts = $this->splitQualifiedName($tag['qname']);
 
             $tag['localPart'] = $parts['localPart'];
             if (isset($parts['namespace'])) {
@@ -649,19 +660,19 @@ class XML_Util
         }
 
         // create attribute list
-        $attList = XML_Util::attributesToString($tag['attributes'],
+        $attList = $this->attributesToString($tag['attributes'],
             $sortAttributes, $multiline, $indent, $linebreak, $replaceEntities);
         if (!isset($tag['content']) || (string)$tag['content'] == '') {
             $tag = sprintf('<%s%s />', $tag['qname'], $attList);
         } else {
             switch ($replaceEntities) {
-            case XML_UTIL_ENTITIES_NONE:
+            case XML_UTIL2_ENTITIES_NONE:
                 break;
-            case XML_UTIL_CDATA_SECTION:
-                $tag['content'] = XML_Util::createCDataSection($tag['content']);
+            case XML_UTIL2_CDATA_SECTION:
+                $tag['content'] = $this->createCDataSection($tag['content']);
                 break;
             default:
-                $tag['content'] = XML_Util::replaceEntities($tag['content'],
+                $tag['content'] = $this->replaceEntities($tag['content'],
                     $replaceEntities);
                 break;
             }
@@ -675,10 +686,12 @@ class XML_Util
      * create a start element
      *
      * <code>
-     * require_once 'XML/Util.php';
+     * require_once 'XML/Util2.php';
+     *
+     * $util = new XML_Util2();
      *
      * // create an XML start element:
-     * $tag = XML_Util::createStartElement('myNs:myTag',
+     * $tag = $util->createStartElement('myNs:myTag',
      *     array('foo' => 'bar') ,'http://www.w3c.org/myNs#');
      * </code>
      *
@@ -694,10 +707,9 @@ class XML_Util
      *
      * @return string XML start element
      * @access public
-     * @static
      * @see createEndElement(), createTag()
      */
-    function createStartElement($qname, $attributes = array(), $namespaceUri = null,
+    public function createStartElement($qname, $attributes = array(), $namespaceUri = null,
         $multiline = false, $indent = '_auto', $linebreak = "\n",
         $sortAttributes = true)
     {
@@ -707,7 +719,7 @@ class XML_Util
         }
 
         if ($namespaceUri != null) {
-            $parts = XML_Util::splitQualifiedName($qname);
+            $parts = $this->splitQualifiedName($qname);
         }
 
         // check for multiline attributes
@@ -728,7 +740,7 @@ class XML_Util
         }
 
         // create attribute list
-        $attList = XML_Util::attributesToString($attributes, $sortAttributes,
+        $attList = $this->attributesToString($attributes, $sortAttributes,
             $multiline, $indent, $linebreak);
         $element = sprintf('<%s%s>', $qname, $attList);
         return  $element;
@@ -738,20 +750,21 @@ class XML_Util
      * create an end element
      *
      * <code>
-     * require_once 'XML/Util.php';
+     * require_once 'XML/Util2.php';
+     *
+     * $util = new XML_Util2();
      *
      * // create an XML start element:
-     * $tag = XML_Util::createEndElement('myNs:myTag');
+     * $tag = $util->createEndElement('myNs:myTag');
      * </code>
      *
      * @param string $qname qualified tagname (including namespace)
      *
      * @return string XML end element
      * @access public
-     * @static
      * @see createStartElement(), createTag()
      */
-    function createEndElement($qname)
+    public function createEndElement($qname)
     {
         $element = sprintf('</%s>', $qname);
         return $element;
@@ -761,19 +774,20 @@ class XML_Util
      * create an XML comment
      *
      * <code>
-     * require_once 'XML/Util.php';
+     * require_once 'XML/Util2.php';
+     *
+     * $util = new XML_Util2();
      *
      * // create an XML start element:
-     * $tag = XML_Util::createComment('I am a comment');
+     * $tag = $util->createComment('I am a comment');
      * </code>
      *
      * @param string $content content of the comment
      *
      * @return string XML comment
      * @access public
-     * @static
      */
-    function createComment($content)
+    public function createComment($content)
     {
         $comment = sprintf('<!-- %s -->', $content);
         return $comment;
@@ -783,17 +797,18 @@ class XML_Util
      * create a CData section
      *
      * <code>
-     * require_once 'XML/Util.php';
+     * require_once 'XML/Util2.php';
+     *
+     * $util = new XML_Util2();
      *
      * // create a CData section
-     * $tag = XML_Util::createCDataSection('I am content.');
+     * $tag = $util->createCDataSection('I am content.');
      * </code>
      *
      * @param string $data data of the CData section
      *
      * @return string CData section with content
      * @access public
-     * @static
      */
     function createCDataSection($data)
     {
@@ -806,10 +821,12 @@ class XML_Util
      * split qualified name and return namespace and local part
      *
      * <code>
-     * require_once 'XML/Util.php';
+     * require_once 'XML/Util2.php';
+     *
+     * $util = new XML_Util2();
      *
      * // split qualified tag
-     * $parts = XML_Util::splitQualifiedName('xslt:stylesheet');
+     * $parts = $util->splitQualifiedName('xslt:stylesheet');
      * </code>
      * the returned array will contain two elements:
      * <pre>
@@ -824,7 +841,6 @@ class XML_Util
      *
      * @return array array containing namespace and local part
      * @access public
-     * @static
      */
     function splitQualifiedName($qname, $defaultNs = null)
     {
@@ -851,10 +867,12 @@ class XML_Util
      * or an underscore.</p>
      *
      * <code>
-     * require_once 'XML/Util.php';
+     * require_once 'XML/Util2.php';
+     *
+     * $util = new XML_Util2();
      *
      * // verify tag name
-     * $result = XML_Util::isValidName('invalidTag?');
+     * $result = $util->isValidName('invalidTag?');
      * if (is_a($result, 'PEAR_Error')) {
      *    print 'Invalid XML name: ' . $result->getMessage();
      * }
@@ -864,7 +882,6 @@ class XML_Util
      *
      * @return mixed true, if string is a valid XML name, PEAR error otherwise
      * @access public
-     * @static
      * @todo support for other charsets
      * @todo PEAR CS - unable to avoid 85-char limit on second preg_match
      */
@@ -872,24 +889,24 @@ class XML_Util
     {
         // check for invalid chars
         if (!preg_match('/^[[:alpha:]_]\\z/', $string{0})) {
-            return XML_Util::raiseError('XML names may only start with letter '
-                . 'or underscore', XML_UTIL_ERROR_INVALID_START);
+            return $this->raiseError('XML names may only start with letter '
+                . 'or underscore', XML_UTIL2_ERROR_INVALID_START);
         }
 
         // check for invalid chars
         if (!preg_match('/^([[:alpha:]_]([[:alnum:]\-\.]*)?:)?[[:alpha:]_]([[:alnum:]\_\-\.]+)?\\z/',
             $string)
         ) {
-            return XML_Util::raiseError('XML names may only contain alphanumeric '
+            return $this->raiseError('XML names may only contain alphanumeric '
                 . 'chars, period, hyphen, colon and underscores',
-                XML_UTIL_ERROR_INVALID_CHARS);
+                XML_UTIL2_ERROR_INVALID_CHARS);
         }
         // XML name is valid
         return true;
     }
 
     /**
-     * replacement for XML_Util::raiseError
+     * replacement for $this->raiseError
      *
      * Avoids the necessity to always require
      * PEAR.php
@@ -899,10 +916,9 @@ class XML_Util
      *
      * @return PEAR_Error
      * @access public
-     * @static
      * @todo PEAR CS - should this use include_once instead?
      */
-    function raiseError($msg, $code)
+    public function raiseError($msg, $code)
     {
         require_once 'PEAR.php';
         return PEAR::raiseError($msg, $code);
