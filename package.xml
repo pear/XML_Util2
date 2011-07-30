@@ -23,7 +23,7 @@
   <active>no</active>
  </helper>
  <date>2011-07-30</date>
- <time>19:54:22</time>
+ <time>20:27:29</time>
  <version>
   <release>2.0.0alpha1</release>
   <api>2.0.0</api>
@@ -67,8 +67,11 @@ PHP5 E_STRICT compatability
     <file name="testBug_5392.phpt" role="test" />
    </dir> <!-- /tests -->
    <dir name="XML">
+    <dir name="Util2">
+     <file name="Exception.php" role="php" />
+    </dir> <!-- /XML/Util2 -->
     <file name="Util2.php" role="php">
-      <tasks:replace from="@version@" to="version" type="package-info" />
+     <tasks:replace from="@version@" to="version" type="package-info" />
     </file>
    </dir> <!-- /XML -->
   </dir> <!-- / -->
@@ -76,7 +79,7 @@ PHP5 E_STRICT compatability
  <dependencies>
   <required>
    <php>
-    <min>5.1.4</min>
+    <min>5.1.0</min>
    </php>
    <pearinstaller>
     <min>1.9.3</min>
