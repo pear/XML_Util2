@@ -15,7 +15,7 @@ echo $util->createTag("test", array(), "Content ]]></test> here!",
 
 ?>
 --EXPECT--
-=====XML_Util tests for Bug #4950 "Incorrect CDATA serializing"=====
+=====XML_Util2 tests for Bug #4950 "Incorrect CDATA serializing"=====
 
 TEST:  test case provided in bug report
 <test><![CDATA[Content ]]]]><![CDATA[></test> here!]]></test>
