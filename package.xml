@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<package packagerversion="1.9.3" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0     http://pear.php.net/dtd/tasks-1.0.xsd     http://pear.php.net/dtd/package-2.0     http://pear.php.net/dtd/package-2.0.xsd">
+<package packagerversion="1.9.4" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0     http://pear.php.net/dtd/tasks-1.0.xsd     http://pear.php.net/dtd/package-2.0     http://pear.php.net/dtd/package-2.0.xsd">
  <name>XML_Util2</name>
  <channel>pear.php.net</channel>
  <summary>XML utility class</summary>
@@ -22,10 +22,10 @@
   <email>davey@php.net</email>
   <active>no</active>
  </helper>
- <date>2011-07-30</date>
- <time>20:44:00</time>
+ <date>2011-11-06</date>
+ <time>13:38:45</time>
  <version>
-  <release>0.1.0</release>
+  <release>0.2.0</release>
   <api>0.1.0</api>
  </version>
  <stability>
@@ -34,49 +34,59 @@
  </stability>
  <license uri="http://opensource.org/licenses/bsd-license">BSD License</license>
  <notes>
-Initial release
-Forked from XML_Util
-Fixed dir layout
-PHP5 E_STRICT compatability
-Use of class constants instead of define()s
-Use of exceptions
+Fixed tests
+Added phpunit 3.6 optional dep
  </notes>
  <contents>
   <dir baseinstalldir="/" name="/">
-   <dir name="examples">
-    <file name="example.php" role="doc" />
-    <file name="example2.php" role="doc" />
-   </dir> <!-- /examples -->
-   <dir name="tests">
-    <file name="AllTests.php" role="test" />
-    <file name="testBasic_apiVersion.phpt" role="test" />
-    <file name="testBasic_attributesToString.phpt" role="test" />
-    <file name="testBasic_collapseEmptyTags.phpt" role="test" />
-    <file name="testBasic_createCDataSection.phpt" role="test" />
-    <file name="testBasic_createComment.phpt" role="test" />
-    <file name="testBasic_createEndElement.phpt" role="test" />
-    <file name="testBasic_createStartElement.phpt" role="test" />
-    <file name="testBasic_createTag.phpt" role="test" />
-    <file name="testBasic_createTagFromArray.phpt" role="test" />
-    <file name="testBasic_getDocTypeDeclaration.phpt" role="test" />
-    <file name="testBasic_getXmlDeclaration.phpt" role="test" />
-    <file name="testBasic_isValidName.phpt" role="test" />
-    <file name="testBasic_raiseError.phpt" role="test" />
-    <file name="testBasic_replaceEntities.phpt" role="test" />
-    <file name="testBasic_reverseEntities.phpt" role="test" />
-    <file name="testBasic_splitQualifiedName.phpt" role="test" />
-    <file name="testBug_4950.phpt" role="test" />
-    <file name="testBug_5392.phpt" role="test" />
-   </dir> <!-- /tests -->
-   <dir name="XML">
-    <dir name="Util2">
-     <file name="Exception.php" role="php" />
-    </dir> <!-- /XML/Util2 -->
-    <file name="Util2.php" role="php">
-     <tasks:replace from="@version@" to="version" type="package-info" />
-    </file>
-   </dir> <!-- /XML -->
-  </dir> <!-- / -->
+   <file baseinstalldir="/" md5sum="9b42cc55566c1a313ed3c372ceeee61e" name="build/XML_Util2-0.1.0.tgz" role="data" />
+   <file baseinstalldir="/" md5sum="770d9c592b4300457ae025448c4c6816" name="build/coverage/close12_1.gif" role="data" />
+   <file baseinstalldir="/" md5sum="5511b676a4961a0dfb52e1f64ce65a7a" name="build/coverage/container-min.js" role="data" />
+   <file baseinstalldir="/" md5sum="495d2ec9631eb89063bdd9d70bd731dc" name="build/coverage/container.css" role="data" />
+   <file baseinstalldir="/" md5sum="0c2ea106ded3a3b443ad39e3eddcd7a6" name="build/coverage/directory.png" role="data" />
+   <file baseinstalldir="/" md5sum="6983bd4ac09f5135eb128cbdf0ceadfe" name="build/coverage/file.png" role="data" />
+   <file baseinstalldir="/" md5sum="d0bcded9081d6a0efda48c495867da73" name="build/coverage/glass.png" role="data" />
+   <file baseinstalldir="/" md5sum="08cdf43b4ba8ce789f86a30a09071ca8" name="build/coverage/highcharts.js" role="data" />
+   <file baseinstalldir="/" md5sum="7bd52cd76bd919cff230ffc24b30b43a" name="build/coverage/index.dashboard.html" role="doc" />
+   <file baseinstalldir="/" md5sum="60fb1c239997e9582e2b37d7ee701dd3" name="build/coverage/index.html" role="doc" />
+   <file baseinstalldir="/" md5sum="0efa3b9aa0f509043308e7c6e23538f8" name="build/coverage/jquery.min.js" role="data" />
+   <file baseinstalldir="/" md5sum="6720298ca22a5214a2e9f8fdb279fbd3" name="build/coverage/style.css" role="data" />
+   <file baseinstalldir="/" md5sum="ad5dc520daf8a4ed5a4648010d2e1870" name="build/coverage/Util2.dashboard.html" role="doc" />
+   <file baseinstalldir="/" md5sum="0aec704502d11605a550848c085ccf97" name="build/coverage/Util2.html" role="doc" />
+   <file baseinstalldir="/" md5sum="f4046ff387eb9e575a019ff8526fbaa4" name="build/coverage/Util2.php.html" role="doc" />
+   <file baseinstalldir="/" md5sum="dfe8726e00b4028be3acabeda1e80400" name="build/coverage/Util2_Exception.php.html" role="doc" />
+   <file baseinstalldir="/" md5sum="366eac96e298168d2c923fcb556fa259" name="build/coverage/yahoo-dom-event.js" role="data" />
+   <file baseinstalldir="/" md5sum="a78796fd6d01687826524e310af0d67b" name="build/logs/clover.xml" role="data" />
+   <file baseinstalldir="/" md5sum="0387960f22eb0636e5d4204d81624706" name="build/logs/junit.xml" role="data" />
+   <file baseinstalldir="/" md5sum="60935c3571412e91e54d4a1a65e57f66" name="examples/example.php" role="doc" />
+   <file baseinstalldir="/" md5sum="1f71e3acecd77771345c8b5c9668c469" name="examples/example2.php" role="doc" />
+   <file baseinstalldir="/" md5sum="f141d3f0c13a097b6dbd11d58d6ed980" name="tests/testBasic_apiVersion.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="246adc1320a5688d4c27b7f5431d5e25" name="tests/testBasic_attributesToString.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="7ff583692cac17c40ec75d158b90e9e7" name="tests/testBasic_collapseEmptyTags.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="6f140026ad44969c50918b4b12b9cc56" name="tests/testBasic_createCDataSection.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="69acb7e6414bfe68931097ae1b36be1b" name="tests/testBasic_createComment.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="60e4571decfb18a8e76041751b8a267d" name="tests/testBasic_createEndElement.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="ef3740c894010ac3e1d21bb1bfdd2645" name="tests/testBasic_createStartElement.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="f5b7ec1eddce0ed0991ba43513825660" name="tests/testBasic_createTag.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="6ff8716c1ef5573cd4d78f73e2b93694" name="tests/testBasic_createTagFromArray.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="6df4bda24acfac35a442d986cd925855" name="tests/testBasic_getDocTypeDeclaration.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="cd7f15038ebbdb29833e67f831c81a3e" name="tests/testBasic_getXmlDeclaration.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="05eaa8b6798a64de915b82a3c61a870e" name="tests/testBasic_isValidName.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="35ac08872860bd4e3775f6e7e94f6024" name="tests/testBasic_raiseError.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="fe5635a8aeb3a150d693e1d4a9db34af" name="tests/testBasic_replaceEntities.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="320e0811e8e3a04863d17c07e47777d7" name="tests/testBasic_reverseEntities.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="01716e98f2e18dcdd60123b298061410" name="tests/testBasic_splitQualifiedName.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="ddbf25c5fd544533667ac2cea204a97a" name="tests/testBug_4950.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="f3b448e382543558e9395148fd790af7" name="tests/testBug_5392.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="d13827e8f556111fd9106dc3f653cd18" name="XML/Util2.php" role="php">
+    <tasks:replace from="@version@" to="version" type="package-info" />
+   </file>
+   <file baseinstalldir="/" md5sum="c92858a967a1f530fdd64181e778c48f" name="XML/Util2/Exception.php" role="php" />
+   <file baseinstalldir="/" md5sum="7410e62876925fdd6f797f317f175dbd" name="build.xml" role="data" />
+   <file baseinstalldir="/" md5sum="1a354b7233a95409f38b7c2dfa729437" name="package.php" role="php" />
+   <file baseinstalldir="/" md5sum="d57fa0c6822dcd8c8a3696017c100da4" name="phpunit.xml" role="data" />
+   <file baseinstalldir="/" md5sum="f968caadf0464027459cea5b0560732a" name="README" role="data" />
+  </dir>
  </contents>
  <dependencies>
   <required>
@@ -90,6 +100,13 @@ Use of exceptions
     <name>pcre</name>
    </extension>
   </required>
+  <optional>
+   <package>
+    <name>PHPUnit</name>
+    <channel>pear.phpunit.de</channel>
+    <min>3.6.0</min>
+   </package>
+  </optional>
  </dependencies>
  <phprelease />
  <changelog>
@@ -111,6 +128,22 @@ Fixed dir layout
 PHP5 E_STRICT compatability
 Use of class constants instead of define()s
 Use of exceptions
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.2.0</release>
+    <api>0.1.0</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <date>2011-11-06</date>
+   <license uri="http://opensource.org/licenses/bsd-license">BSD License</license>
+   <notes>
+Fixed tests
+Added phpunit 3.6 optional dep
    </notes>
   </release>
  </changelog>
