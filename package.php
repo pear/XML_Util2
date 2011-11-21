@@ -25,7 +25,7 @@ EOT;
 $package = PEAR_PackageFileManager2::importOptions(
     'package.xml',
     array(
-    'filelistgenerator' => 'svn',
+    'filelistgenerator' => 'git',
     'changelogoldtonew' => false,
     'simpleoutput'	=> true,
     'baseinstalldir'    => '/',

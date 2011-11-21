@@ -39,25 +39,6 @@ Added phpunit 3.6 optional dep
  </notes>
  <contents>
   <dir baseinstalldir="/" name="/">
-   <file baseinstalldir="/" md5sum="9b42cc55566c1a313ed3c372ceeee61e" name="build/XML_Util2-0.1.0.tgz" role="data" />
-   <file baseinstalldir="/" md5sum="770d9c592b4300457ae025448c4c6816" name="build/coverage/close12_1.gif" role="data" />
-   <file baseinstalldir="/" md5sum="5511b676a4961a0dfb52e1f64ce65a7a" name="build/coverage/container-min.js" role="data" />
-   <file baseinstalldir="/" md5sum="495d2ec9631eb89063bdd9d70bd731dc" name="build/coverage/container.css" role="data" />
-   <file baseinstalldir="/" md5sum="0c2ea106ded3a3b443ad39e3eddcd7a6" name="build/coverage/directory.png" role="data" />
-   <file baseinstalldir="/" md5sum="6983bd4ac09f5135eb128cbdf0ceadfe" name="build/coverage/file.png" role="data" />
-   <file baseinstalldir="/" md5sum="d0bcded9081d6a0efda48c495867da73" name="build/coverage/glass.png" role="data" />
-   <file baseinstalldir="/" md5sum="08cdf43b4ba8ce789f86a30a09071ca8" name="build/coverage/highcharts.js" role="data" />
-   <file baseinstalldir="/" md5sum="7bd52cd76bd919cff230ffc24b30b43a" name="build/coverage/index.dashboard.html" role="doc" />
-   <file baseinstalldir="/" md5sum="60fb1c239997e9582e2b37d7ee701dd3" name="build/coverage/index.html" role="doc" />
-   <file baseinstalldir="/" md5sum="0efa3b9aa0f509043308e7c6e23538f8" name="build/coverage/jquery.min.js" role="data" />
-   <file baseinstalldir="/" md5sum="6720298ca22a5214a2e9f8fdb279fbd3" name="build/coverage/style.css" role="data" />
-   <file baseinstalldir="/" md5sum="ad5dc520daf8a4ed5a4648010d2e1870" name="build/coverage/Util2.dashboard.html" role="doc" />
-   <file baseinstalldir="/" md5sum="0aec704502d11605a550848c085ccf97" name="build/coverage/Util2.html" role="doc" />
-   <file baseinstalldir="/" md5sum="f4046ff387eb9e575a019ff8526fbaa4" name="build/coverage/Util2.php.html" role="doc" />
-   <file baseinstalldir="/" md5sum="dfe8726e00b4028be3acabeda1e80400" name="build/coverage/Util2_Exception.php.html" role="doc" />
-   <file baseinstalldir="/" md5sum="366eac96e298168d2c923fcb556fa259" name="build/coverage/yahoo-dom-event.js" role="data" />
-   <file baseinstalldir="/" md5sum="a78796fd6d01687826524e310af0d67b" name="build/logs/clover.xml" role="data" />
-   <file baseinstalldir="/" md5sum="0387960f22eb0636e5d4204d81624706" name="build/logs/junit.xml" role="data" />
    <file baseinstalldir="/" md5sum="60935c3571412e91e54d4a1a65e57f66" name="examples/example.php" role="doc" />
    <file baseinstalldir="/" md5sum="1f71e3acecd77771345c8b5c9668c469" name="examples/example2.php" role="doc" />
    <file baseinstalldir="/" md5sum="f141d3f0c13a097b6dbd11d58d6ed980" name="tests/testBasic_apiVersion.phpt" role="test" />
