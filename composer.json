@@ -18,14 +18,14 @@
     ],
     "autoload": {
         "psr-0": {
-            "XML_Util2": "./"
+            "XML": "./"
         }
     },
     "description": "More info available on: http://pear.php.net/package/XML_Util2",
     "include-path": [
         "./"
     ],
-    "license": "BSD License",
+    "license": "BSD-2-Clause",
     "name": "pear/xml_util2",
     "support": {
         "issues": "http://pear.php.net/bugs/search.php?cmd=display&package_name[]=XML_Util2",
@@ -33,7 +33,7 @@
     },
     "type": "library",
     "require": {
-        "pear/pear_exception": "*"
+        "ext-pcre": "*"
     },
     "require-dev": {
         "phpunit/phpunit": "*"
