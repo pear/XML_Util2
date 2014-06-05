@@ -15,3 +15,12 @@ To install from scratch
 $ pear install package.xml
 To upgrade
 $ pear upgrade -f package.xml
+
+
+
+To run tests against an installation, run from anywhere but the parent directory:
+$ pear run-tests XML_Util2/tests/ -p xml_util2
+
+To run tests on uninstalled sandbox, run from the parent directory exactly:
+$ pear run-tests tests
+

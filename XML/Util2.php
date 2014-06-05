@@ -663,7 +663,7 @@ class XML_Util2
 
         // create attribute list
         $attList = $this->attributesToString($tag['attributes'],
-            $sortAttributes, $multiline, $indent, $linebreak, XML_Util2::ENTITIES_NONE);
+            $sortAttributes, $multiline, $indent, $linebreak);
         if (!isset($tag['content']) || (string)$tag['content'] == '') {
             $tag = sprintf('<%s%s />', $tag['qname'], $attList);
         } else {
