@@ -22,8 +22,8 @@
   <email>davey@php.net</email>
   <active>no</active>
  </helper>
- <date>2011-11-06</date>
- <time>13:38:45</time>
+ <date>2014-06-07</date>
+ <time>11:05:05</time>
  <version>
   <release>0.2.0</release>
   <api>0.1.0</api>
@@ -36,6 +36,7 @@
  <notes>
 Fixed tests
 Added phpunit 3.6 optional dep
+Bug #18343 Entities in file names decoded during packaging
  </notes>
  <contents>
   <dir baseinstalldir="/" name="/">
@@ -49,7 +50,7 @@ Added phpunit 3.6 optional dep
    <file baseinstalldir="/" md5sum="60e4571decfb18a8e76041751b8a267d" name="tests/testBasic_createEndElement.phpt" role="test" />
    <file baseinstalldir="/" md5sum="ef3740c894010ac3e1d21bb1bfdd2645" name="tests/testBasic_createStartElement.phpt" role="test" />
    <file baseinstalldir="/" md5sum="f5b7ec1eddce0ed0991ba43513825660" name="tests/testBasic_createTag.phpt" role="test" />
-   <file baseinstalldir="/" md5sum="6ff8716c1ef5573cd4d78f73e2b93694" name="tests/testBasic_createTagFromArray.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="4a5c16b429cf051814aaba397491c235" name="tests/testBasic_createTagFromArray.phpt" role="test" />
    <file baseinstalldir="/" md5sum="6df4bda24acfac35a442d986cd925855" name="tests/testBasic_getDocTypeDeclaration.phpt" role="test" />
    <file baseinstalldir="/" md5sum="cd7f15038ebbdb29833e67f831c81a3e" name="tests/testBasic_getXmlDeclaration.phpt" role="test" />
    <file baseinstalldir="/" md5sum="05eaa8b6798a64de915b82a3c61a870e" name="tests/testBasic_isValidName.phpt" role="test" />
@@ -59,14 +60,11 @@ Added phpunit 3.6 optional dep
    <file baseinstalldir="/" md5sum="01716e98f2e18dcdd60123b298061410" name="tests/testBasic_splitQualifiedName.phpt" role="test" />
    <file baseinstalldir="/" md5sum="ddbf25c5fd544533667ac2cea204a97a" name="tests/testBug_4950.phpt" role="test" />
    <file baseinstalldir="/" md5sum="f3b448e382543558e9395148fd790af7" name="tests/testBug_5392.phpt" role="test" />
-   <file baseinstalldir="/" md5sum="d13827e8f556111fd9106dc3f653cd18" name="XML/Util2.php" role="php">
+   <file baseinstalldir="/" md5sum="849b2260f8be360ede51a59cc8309f70" name="tests/testBug_18343.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="8da728181a982972fd09581a15daf9bd" name="XML/Util2.php" role="php">
     <tasks:replace from="@version@" to="version" type="package-info" />
    </file>
    <file baseinstalldir="/" md5sum="c92858a967a1f530fdd64181e778c48f" name="XML/Util2/Exception.php" role="php" />
-   <file baseinstalldir="/" md5sum="7410e62876925fdd6f797f317f175dbd" name="build.xml" role="data" />
-   <file baseinstalldir="/" md5sum="1a354b7233a95409f38b7c2dfa729437" name="package.php" role="php" />
-   <file baseinstalldir="/" md5sum="d57fa0c6822dcd8c8a3696017c100da4" name="phpunit.xml" role="data" />
-   <file baseinstalldir="/" md5sum="f968caadf0464027459cea5b0560732a" name="README" role="data" />
   </dir>
  </contents>
  <dependencies>
@@ -120,11 +118,12 @@ Use of exceptions
     <release>alpha</release>
     <api>alpha</api>
    </stability>
-   <date>2011-11-06</date>
+   <date>2014-06-07</date>
    <license uri="http://opensource.org/licenses/bsd-license">BSD License</license>
    <notes>
 Fixed tests
 Added phpunit 3.6 optional dep
+Bug #18343 Entities in file names decoded during packaging
    </notes>
   </release>
  </changelog>
